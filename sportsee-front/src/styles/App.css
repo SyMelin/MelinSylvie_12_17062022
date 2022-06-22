@@ -1,0 +1,11 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    background-color: #FFFFFF;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}

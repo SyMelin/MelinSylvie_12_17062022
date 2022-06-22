@@ -1,0 +1,8 @@
+.header {
+    height: 5.6875em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #020203;
+}

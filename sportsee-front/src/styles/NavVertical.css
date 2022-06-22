@@ -1,0 +1,14 @@
+.nav--vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #020203;
+    width: 7.3125em;
+}
+
+.nav--vertical p {
+    color: #FFFFFF;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+}

@@ -1,0 +1,8 @@
+.energySourcesList {
+    margin-left: 1.9375em;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.4375em;
+}

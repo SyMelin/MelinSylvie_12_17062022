@@ -1,0 +1,33 @@
+.energySource {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 1.5em;
+    padding: 2em;
+    background-color: #FBFBFB;
+    border-radius: 0.3125em;
+}
+
+.energySource__text p {
+    margin: 0;
+}
+
+.energySource__count {
+    font-weight: 700;
+    font-size: 1.25em;
+    line-height: 1.5em;
+    color: #282D30;
+}
+
+.energySource__type {
+    font-weight: 400;
+    font-size: 0.875em;
+    line-height: 1.5em;
+    color: #74798C;
+}
+
+.energySource__img {
+    width: 3.75em;
+    height: 3.75em;
+    border-radius: 0.375em;
+}
