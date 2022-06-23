@@ -15,7 +15,7 @@
 }
 
 .graph1 {
-    background-color: aqua;
+    background-color: #FBFBFB;
     grid-column: 1 / 4;
     grid-row: 1 / 3;
 }
