@@ -32,7 +32,8 @@ function ActivitySessionsBarChart({activitySessions}) {
                 <Legend iconType='circley' iconSize='8' verticalAlign='middle' wrapperStyle={{ top: 24, left: 200, lineHeight: '40px', fontSize: '14', fontWeight: 500 }} />
                 <Bar yAxisId="left" dataKey="kilogram" name="Poids (kg)" barSize={7} radius={[3, 3, 0, 0]} fill="#282D30" />
                 <Bar yAxisId="right" dataKey="calories" name="Calories brulées (kCal)" barSize={7} radius={[3, 3, 0, 0]} fill="#E60000" />
-            </BarChart>      
+                <text x="32" y="24" dominantBaseline="hanging" fontSize="15" fontWeight="500">Activité quotidienne</text>
+            </BarChart>     
         </ResponsiveContainer>  
     )
 }
