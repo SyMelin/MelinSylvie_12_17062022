@@ -27,6 +27,7 @@
 .graph2, .graph3, .graph4 {
    /* grid-row: 3 / 5;*/
    border: 1px solid black;
+   box-sizing: border-box;
 }
 
 .graph2 {
