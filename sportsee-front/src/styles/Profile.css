@@ -25,12 +25,12 @@
 }
 
 .graph2 {
-    background-color: yellowgreen;
+    background-color: #FF0000;
     grid-row: 3 / 5;
 }
 
 .graph3{
-    background-color: orangered;
+    background-color: yellowgreen;
 }
 .graph4{
     background-color: blue;

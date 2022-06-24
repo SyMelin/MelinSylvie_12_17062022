@@ -2,7 +2,7 @@ import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Responsive
 import PropTypes from 'prop-types'
 import '../../styles/ActivitySessionsBarChart.css'
 
-function CustomTooltipBarChart({ payload, label, active }) {
+function CustomTooltipBarChart({ payload, active }) {
     if (active) {
         return (
             <div className='customTooltipBarChart'>
@@ -13,8 +13,6 @@ function CustomTooltipBarChart({ payload, label, active }) {
         )
     }
 }
-
-
 
 function ActivitySessionsBarChart({activitySessions}) {
     const numberOfDay = (day) => { 
