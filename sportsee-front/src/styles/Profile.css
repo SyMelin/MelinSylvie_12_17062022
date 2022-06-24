@@ -8,32 +8,43 @@
 }
 
 .wrapper {
-    width : 70%;
-    display: grid;
+    width : 100%;
+    display: flex;
+    flex-direction: column;
+  /*  display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);*/
 }
 
 .graph1 {
     background-color: #FBFBFB;
-    grid-column: 1 / 4;
-    grid-row: 1 / 3;
+   /* grid-column: 1 / 4;
+    grid-row: 1 / 3;*/
+    width: 835px;
+    height: 320px;
 }
 
 .graph2, .graph3, .graph4 {
-    grid-row: 3 / 5;
+   /* grid-row: 3 / 5;*/
+   border: 1px solid black;
 }
 
 .graph2 {
     background-color: #FF0000;
-    grid-row: 3 / 5;
+   /* grid-row: 3 / 5;*/
+    width: 258px;
+    height: 263px;
 }
 
 .graph3{
     background-color: yellowgreen;
+    width: 258px;
+    height: 263px;
 }
 .graph4{
-    background-color: blue;
+    background-color: #FBFBFB;
+    width: 258px;
+    height: 263px;
 }
 
 aside {
