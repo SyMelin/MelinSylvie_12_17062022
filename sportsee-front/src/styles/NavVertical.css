@@ -4,7 +4,14 @@
     justify-content: space-between;
     align-items: center;
     background-color: #020203;
-    width: 7.3125em;
+    box-sizing: border-box;
+    padding-left: 1.625em;
+    padding-right: 1.6875em;
+}
+
+.iconsList {
+  /*  border: 1px solid white;*/
+    padding: 0; 
 }
 
 .nav--vertical p {

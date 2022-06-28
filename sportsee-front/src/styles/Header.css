@@ -6,3 +6,8 @@
     align-items: center;
     background-color: #020203;
 }
+
+.logo {
+    margin-left: 1.8125em;
+    width: 11.125em;
+}
