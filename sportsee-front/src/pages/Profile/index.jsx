@@ -5,7 +5,7 @@ import AverageSessionLineChart from "../../components/AverageSessionLineChart"
 import PerformanceRadarChart from "../../components/PerformanceRadarChart"
 import ScorePieChart from "../../components/ScorePieChart"
 import EnergySourcesCount from "../../components/EnergySourcesCount"
-import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS } from '../../utils/data/data'
+import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../utils/data/data'
 import '../../styles/Profile.css'
 
 const userMainData = USER_MAIN_DATA[0]
@@ -14,6 +14,7 @@ const todayScore = USER_MAIN_DATA[0].todayScore
 const keyData = USER_MAIN_DATA[0].keyData
 const activitySessions = USER_ACTIVITY[0].sessions
 const averageSessions = USER_AVERAGE_SESSIONS[0].sessions
+const performance = USER_PERFORMANCE[0]
 
 function Profile() {
     return (
@@ -31,6 +32,7 @@ function Profile() {
                     <AverageSessionLineChart averageSessions={averageSessions}/>
                 </div>
                 <div className="graph3">
+                    <PerformanceRadarChart performance={performance} />
                 </div>
                 <div className="graph4">
                     <ScorePieChart todayScore={todayScore} />
