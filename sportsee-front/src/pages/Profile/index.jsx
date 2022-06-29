@@ -5,9 +5,10 @@ import AverageSessionLineChart from "../../components/AverageSessionLineChart"
 import PerformanceRadarChart from "../../components/PerformanceRadarChart"
 import ScorePieChart from "../../components/ScorePieChart"
 import EnergySourcesCount from "../../components/EnergySourcesCount"
-//import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../utils/data/data'
-import { useMainData, useActivity } from '../../api'
+import { useFetch } from '../../utils/hooks'
 import '../../styles/Profile.css'
+
+//import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../utils/data/data'
 /*
 const userMainData = USER_MAIN_DATA[0]
 const userName = USER_MAIN_DATA[0].userInfos.firstName
@@ -19,59 +20,50 @@ const performance = USER_PERFORMANCE[0]
 */
 
 
-
-
 function Profile() {
-    const userMainData = useMainData()
-    console.log(userMainData)
-    const activity = useActivity()
+
+    const userId = 12 //get from URL params
     
-    if (userMainData.userInfos && activity) {
+    const urls = [
+        `http://localhost:3000/user/${userId}`,
+        `http://localhost:3000/user/${userId}/activity`,
+        `http://localhost:3000/user/${userId}/average-sessions`,
+        `http://localhost:3000/user/${userId}/performance`
+    ]
+
+    const { data, isLoading, error } = useFetch(urls)
+    
+    if (!isLoading) {
+        const user = data
+        console.log("user", user)
+
         return (
             <div className="dashboard">
                 <Welcome
                     userName={0.12}
-                    todayScore={userMainData.todayScore} //Route!!!
+                    todayScore={user.mainData.todayScore} //ROUTE!!!
                 />
                 <div className="wrapper">
                     <div className="graph1">
-                        <ActivitySessionsBarChart activitySessions={activity.sessions}/>
+                        <ActivitySessionsBarChart activitySessions={user.activity.sessions}/>
                     </div>
+                    <div className="graph2">
+                        <AverageSessionLineChart averageSessions={user.averageSessions.sessions}/>
+                    </div>
+                    <div className="graph3">
+                        <PerformanceRadarChart performance={user.performance} />
+                    </div>
+                    <div className="graph4">
+                        <ScorePieChart todayScore={user.mainData.todayScore} //ROUTE!!!
+                        /> 
+                    </div>  
                 </div>
+                <EnergySourcesCount
+                    keyData={user.mainData.keyData} //ROUTE!!!
+                />
             </div>
         )
-    }
-
-    
-   
-
-/*
-    return (
-        <div className="dashboard">
-            <Welcome
-                userName={userName}
-                todayScore={todayScore}
-            />
-            <div className="wrapper">
-                <div className="graph1">
-                    <ActivitySessionsBarChart activitySessions={activitySessions}/>
-                </div>
-                
-                <div className="graph2">
-                    <AverageSessionLineChart averageSessions={averageSessions}/>
-                </div>
-                <div className="graph3">
-                    <PerformanceRadarChart performance={performance} />
-                </div>
-                <div className="graph4">
-                    <ScorePieChart todayScore={todayScore} />
-                </div>  
-            </div>
-            <EnergySourcesCount
-                keyData={keyData}
-            />
-        </div>
-    )*/
+    } 
 }
 
 export default Profile
