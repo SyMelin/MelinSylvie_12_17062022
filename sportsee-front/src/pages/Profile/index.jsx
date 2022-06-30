@@ -3,7 +3,7 @@ import Welcome from "../../components/Welcome"
 import ActivitySessionsBarChart from "../../components/ActivitySessionsBarChart"
 import AverageSessionLineChart from "../../components/AverageSessionLineChart"
 import PerformanceRadarChart from "../../components/PerformanceRadarChart"
-import ScorePieChart from "../../components/ScorePieChart"
+import ScoreRadialBarChart from "../../components/ScoreRadialBarChart"
 import EnergySourcesCount from "../../components/EnergySourcesCount"
 import urls from "../../utils/constantes/urls"
 import { useFetch } from '../../utils/hooks'
@@ -24,7 +24,7 @@ const performance = USER_PERFORMANCE[0]
 function Profile() {
 
     const { data, isLoading, error } = useFetch(Object.values(urls))
-    console.log(Object.keys(urls))
+  //  console.log(Object.keys(urls))
     
     if (!isLoading) {
         const user = data
@@ -47,7 +47,7 @@ function Profile() {
                         <PerformanceRadarChart performance={user.performance} />
                     </div>
                     <div className="graph4">
-                        <ScorePieChart todayScore={user.todayScore}
+                        <ScoreRadialBarChart todayScore={user.todayScore}
                         /> 
                     </div>  
                 </div>
