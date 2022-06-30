@@ -5,6 +5,7 @@ import AverageSessionLineChart from "../../components/AverageSessionLineChart"
 import PerformanceRadarChart from "../../components/PerformanceRadarChart"
 import ScorePieChart from "../../components/ScorePieChart"
 import EnergySourcesCount from "../../components/EnergySourcesCount"
+import urls from "../../utils/constantes/urls"
 import { useFetch } from '../../utils/hooks'
 import '../../styles/Profile.css'
 
@@ -22,22 +23,12 @@ const performance = USER_PERFORMANCE[0]
 
 function Profile() {
 
-    const userId = 12 //get from URL params
-    
-    const urls = [
-        `http://localhost:3000/user/${userId}`,
-        `http://localhost:3000/user/${userId}/activity`,
-        `http://localhost:3000/user/${userId}/average-sessions`,
-        `http://localhost:3000/user/${userId}/performance`,
-        `http://localhost:3000/user/${userId}/today-score`,
-        `http://localhost:3000/user/${userId}/key-data`
-    ]
-
-    const { data, isLoading, error } = useFetch(urls)
+    const { data, isLoading, error } = useFetch(Object.values(urls))
+    console.log(Object.keys(urls))
     
     if (!isLoading) {
         const user = data
-        console.log("user", user)
+       // console.log("user", user)
 
         return (
             <div className="dashboard">
