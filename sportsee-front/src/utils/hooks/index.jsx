@@ -16,8 +16,8 @@ export function useFetch(urls) {
             try {
                 const response = await Promise.all(urls.map(e => fetch(e)))
                 const responseJSON = await Promise.all(response.map(e => e.json()))
-                const [ mainData, activity, averageSessions, performance ] = responseJSON.map((e) => e.data)
-                const data = {mainData, activity, averageSessions, performance}
+                const [ mainData, activity, averageSessions, performance, todayScore, keyData ] = responseJSON.map((e) => e.data)
+                const data = { mainData, activity, averageSessions, performance, todayScore, keyData }
                 setData(data)
             } catch (err) {
                 console.log(err)

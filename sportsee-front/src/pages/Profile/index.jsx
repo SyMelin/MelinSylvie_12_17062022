@@ -28,7 +28,9 @@ function Profile() {
         `http://localhost:3000/user/${userId}`,
         `http://localhost:3000/user/${userId}/activity`,
         `http://localhost:3000/user/${userId}/average-sessions`,
-        `http://localhost:3000/user/${userId}/performance`
+        `http://localhost:3000/user/${userId}/performance`,
+        `http://localhost:3000/user/${userId}/today-score`,
+        `http://localhost:3000/user/${userId}/key-data`
     ]
 
     const { data, isLoading, error } = useFetch(urls)
@@ -40,8 +42,8 @@ function Profile() {
         return (
             <div className="dashboard">
                 <Welcome
-                    userName={0.12}
-                    todayScore={user.mainData.todayScore} //ROUTE!!!
+                    userName={user.mainData.userInfos.firstName}
+                    todayScore={user.todayScore}
                 />
                 <div className="wrapper">
                     <div className="graph1">
@@ -54,12 +56,12 @@ function Profile() {
                         <PerformanceRadarChart performance={user.performance} />
                     </div>
                     <div className="graph4">
-                        <ScorePieChart todayScore={user.mainData.todayScore} //ROUTE!!!
+                        <ScorePieChart todayScore={user.todayScore}
                         /> 
                     </div>  
                 </div>
                 <EnergySourcesCount
-                    keyData={user.mainData.keyData} //ROUTE!!!
+                    keyData={user.keyData}
                 />
             </div>
         )
