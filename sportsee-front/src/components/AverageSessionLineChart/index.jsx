@@ -26,8 +26,8 @@ function AverageSessionLineChart({averageSessions}) {
 
     return (
         <ResponsiveContainer width="100%" height="100%">
-            <LineChart width={600} height={300} data={averageSessions} margin={{ top: 60, right: 0, bottom: 30, left: -50 }}>
-                <Line type="monotone" dataKey="sessionLength" stroke="#FFFFFF" strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
+            <LineChart width={600} height={300} data={averageSessions} margin={{ top: 80, right: 0, bottom: 50, left: -50 }}>
+                <Line type="natural" dataKey="sessionLength" stroke="#FFFFFF" strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
                 <XAxis dataKey="day" tickFormatter={dayShort} axisLine={false} tickLine={false} tick={{fill: '#FFFFFF', fontSize:'12', fontWeight:'500', opacity:'0.5'}} dy={19.5} />
                 <YAxis axisLine={false} tickLine={false} tick={false} />
                 <Tooltip content={<CustomTooltip />} />
