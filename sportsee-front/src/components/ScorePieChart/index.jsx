@@ -50,4 +50,8 @@ ScorePieChart.propTypes = {
     todayScore: PropTypes.number
 }
 
+ScorePieChart.defaultProps = {
+    todayScore: 0
+}
+
 export default ScorePieChart
