@@ -24,8 +24,8 @@ function ScoreRadialBarChart({todayScore}) {
     return (
         <ResponsiveContainer>
             <RadialBarChart
-                width={400}
-                height={400}
+               // width={400}
+               // height={400}
                 cx="50%"
                 cy="50%"
                 innerRadius="60%"

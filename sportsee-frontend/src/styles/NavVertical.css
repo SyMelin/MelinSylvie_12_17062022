@@ -1,12 +1,13 @@
 .nav--vertical {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     background-color: #020203;
-    box-sizing: border-box;
     padding-left: 1.625em;
     padding-right: 1.6875em;
+ /*   height: 100vh;*/
 }
 
 .iconsList {
