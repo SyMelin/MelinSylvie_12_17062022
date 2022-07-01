@@ -1,11 +1,6 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    color: black;
-    background-color: #FFFFFF;
-}
-
 .main {
     display: flex;
     flex-direction: row;
-    height: 100%;
+   /* width: 100%;
+    height: 100%;*/
 }

@@ -2,12 +2,12 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     background-color: #020203;
     padding-left: 1.625em;
     padding-right: 1.6875em;
- /*   height: 100vh;*/
+    margin: 0;
 }
 
 .iconsList {
