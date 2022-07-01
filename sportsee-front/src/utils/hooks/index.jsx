@@ -16,13 +16,12 @@ export function useFetch(urls) {
 
         async function fetchData() {
             try {
-                const response = await Promise.all(urls.map(e => fetch(e)))
+                const response = await Promise.all(urls.map(url => fetch(url, { method: 'GET' })))
                 const responseJSON = await Promise.all(response.map(e => e.json()))
-                const [ mainData, activity, averageSessions, performance, todayScore, keyData ] = responseJSON.map((e) => e.data)
-                const data = { mainData, activity, averageSessions, performance, todayScore, keyData }
+                const data = responseJSON.map((e) => e.data)
                 setData(data)
             } catch (err) {
-                console.log(err)
+                console.log('== error ==', err)
                 setError(true)
             } finally {
                 setLoading(false)

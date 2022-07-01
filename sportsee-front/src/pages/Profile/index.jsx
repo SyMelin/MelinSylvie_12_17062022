@@ -9,26 +9,19 @@ import urls from "../../utils/constantes/urls"
 import { useFetch } from '../../utils/hooks'
 import '../../styles/Profile.css'
 
-//import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../utils/data/data'
-/*
-const userMainData = USER_MAIN_DATA[0]
-const userName = USER_MAIN_DATA[0].userInfos.firstName
-const todayScore = USER_MAIN_DATA[0].todayScore
-const keyData = USER_MAIN_DATA[0].keyData
-const activitySessions = USER_ACTIVITY[0].sessions
-const averageSessions = USER_AVERAGE_SESSIONS[0].sessions
-const performance = USER_PERFORMANCE[0]
-*/
-
-
 function Profile() {
 
-    const { data, isLoading, error } = useFetch(Object.values(urls))
-  //  console.log(Object.keys(urls))
+    //const {userId}  = useParams()
+    const {userId} = {userId: 12} //get from URL params
+    const { data, isLoading, error } = useFetch(Object.values(urls(userId)))
+
+    if (error) {
+        return <div>Error: Something went wrong</div>
+    }
     
     if (!isLoading) {
-        const user = data
-       // console.log("user", user)
+        const [ mainData, activity, averageSessions, performance, todayScore, keyData ] = data
+        const user = { mainData, activity, averageSessions, performance, todayScore, keyData }
 
         return (
             <div className="dashboard">

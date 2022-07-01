@@ -1,15 +1,42 @@
-const userId = 12 //get from URL params
+const urls = function (userId) {
+    const domain = 'http://localhost:3000'
 
-const urls = {
-    mainData: `http://localhost:3000/user/${userId}`,
-    activity: `http://localhost:3000/user/${userId}/activity`,
-    averageSessions: `http://localhost:3000/user/${userId}/average-sessions`,
-    performance: `http://localhost:3000/user/${userId}/performance`,
-    todayScore: `http://localhost:3000/user/${userId}/today-score`,
-    keyData: `http://localhost:3000/user/${userId}/key-data`
+    const endpoints = {
+        mainData: '',
+        activity: '/activity',
+        averageSessions: '/average-sessions',
+        performance: '/performance',
+        todayScore: '/today-score',
+        keyData: '/key-data'
+    }
+    
+    Object.keys(endpoints).forEach(key => {
+    endpoints[key] = `${domain}/user/${userId}` + endpoints[key]
+    })
+
+    return endpoints
 }
 
-export default urls 
+export default urls
+
+
+
+
+/*
+const urls = function (userId) {
+    const domain = 'http://localhost:3000'
+    return {
+        mainData: `${domain}/user/${userId}`,
+        activity: `${domain}/user/${userId}/activity`,
+        averageSessions: `${domain}/user/${userId}/average-sessions`,
+        performance: `${domain}/user/${userId}/performance`,
+        todayScore: `${domain}/user/${userId}/today-score`,
+        keyData: `${domain}/user/${userId}/key-data`
+    }
+}
+
+export default urls
+*/
 
 /*
 const urls = [
