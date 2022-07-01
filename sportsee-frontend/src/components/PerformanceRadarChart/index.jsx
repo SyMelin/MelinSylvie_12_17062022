@@ -34,7 +34,7 @@ function PerformanceRadarChart({performance}) {
     }
 
     return (
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer>
             <RadarChart cx="50%" cy="50%" outerRadius="70%" data={[...performance.data].reverse()} >
                 <PolarGrid stroke="#FFFFFF" radialLines={false} />
                 <PolarAngleAxis dataKey="kind" tickFormatter={kindToName} stroke="#FFFFFF" tickLine={false} tick={props => customPolarAngleAxis(props)} />
