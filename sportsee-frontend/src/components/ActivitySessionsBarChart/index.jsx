@@ -15,7 +15,7 @@ function CustomTooltipBarChart({ payload, active }) {
     }
 }
 
-function ActivitySessionsBarChart({activitySessions}) {
+function ActivitySessionsBarChart({activitySessions, dimensions}) {
     const numberOfDay = (day) => { 
         return parseInt((day.split('-'))[2], 10)
     }
@@ -35,9 +35,8 @@ function ActivitySessionsBarChart({activitySessions}) {
     };
 
     return (
-        <ResponsiveContainer>
             <BarChart
-                data={activitySessions}/*width={835} height={320}*/
+                data={activitySessions} width={dimensions.width * 0.55} height={320}
                 margin={{top: 95, right: 29, left: 0, bottom: 23}}
                 barGap={8}
                 onMouseMove={onMouseMove}
@@ -60,7 +59,6 @@ function ActivitySessionsBarChart({activitySessions}) {
                 <Bar yAxisId="right" dataKey="calories" name="Calories brulées (kCal)" barSize={7} radius={[3, 3, 0, 0]} fill="#E60000" />
                 <text x="32" y="24" dominantBaseline="hanging" fontSize="15" fontWeight="500">Activité quotidienne</text>
             </BarChart>     
-        </ResponsiveContainer>  
     )
 }
 

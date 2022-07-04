@@ -15,17 +15,16 @@ function SRBCCustomLabel({todayScore}) {
     ) 
 }
 
-function ScoreRadialBarChart({todayScore}) {
+function ScoreRadialBarChart({todayScore, dimensions}) {
     const arrayScore = [
         {score: 1, fill: "#FFFFFF"}, //reference = 100%
         {score: todayScore, fill: "#FF0000"}
     ]
 
     return (
-        <ResponsiveContainer>
             <RadialBarChart
-               // width={400}
-               // height={400}
+               width={dimensions.width * 0.18}
+                height={400}
                 cx="50%"
                 cy="50%"
                 innerRadius="60%"
@@ -44,7 +43,6 @@ function ScoreRadialBarChart({todayScore}) {
                 </RadialBar>
                 <text x="30" y="24" dominantBaseline="hanging" fontSize="15" fontWeight="500">Score</text>
             </RadialBarChart>      
-       </ResponsiveContainer>
     )
 }
 

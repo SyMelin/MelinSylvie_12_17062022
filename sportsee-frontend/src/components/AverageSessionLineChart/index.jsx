@@ -25,7 +25,7 @@ const CustomCursor = props => {
   </rect>;
 }
 
-function AverageSessionLineChart({averageSessions}) {
+function AverageSessionLineChart({averageSessions, dimensions}) {
   const dayShort = (day) => {
     const weekdays = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
     return weekdays[day - 1]
@@ -55,10 +55,10 @@ function AverageSessionLineChart({averageSessions}) {
   };
 
     return (
-        <ResponsiveContainer>
-            <LineChart /*width={600} height={300}*/ 
+            <LineChart width={dimensions.width * 0.18} height={300}
               data={averageSessions}
               margin={{ top: 80, right: 0, bottom: 50, left: -50 }}
+              padding={0}
               onMouseMove={onMouseMove}
               onMouseOut={onMouseOut}
               >
@@ -77,7 +77,6 @@ function AverageSessionLineChart({averageSessions}) {
                 <text x="34" y="29" dominantBaseline="hanging" fontSize="15" fontWeight="500" fill="#FFFFFF" opacity={0.5}><tspan x="34" y="29">Durée moyenne des</tspan><tspan x="34" y="53">sessions</tspan></text>
                 <rect width="110%" height="100%" x={cursorX} y={0} fill= "#000000" opacity={0.1} />
             </LineChart>
-        </ResponsiveContainer>
         
     )
 }
