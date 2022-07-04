@@ -70,7 +70,7 @@ function AverageSessionLineChart({averageSessions}) {
                     <stop offset={`${100 / 0.4032}%`} stopColor="#FFFFFF" />
                   </linearGradient>
                 </defs>
-                <Line type="natural" dataKey="sessionLength" stroke="url(#colorUv)" strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
+                <Line type="natural" dataKey="sessionLength" stroke="url(#colorUv)" strokeWidth={5} dot={false} activeDot={{ stroke: "rgba(255, 255, 255, 0.1983)", strokeWidth: '10', fill: "#FFFFFF", r: 4 }} />
                 <XAxis dataKey="day" tickFormatter={dayShort} axisLine={false} tickLine={false} tick={{fill: '#FFFFFF', fontSize:'12', fontWeight:'500', opacity:'0.5'}} dy={19.5} />
                 <YAxis axisLine={false} tickLine={false} tick={false} />
                 <Tooltip /*cursor={<CustomCursor />}*/ cursor={false} content={<CustomTooltip />} />

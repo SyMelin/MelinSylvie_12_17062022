@@ -22,7 +22,7 @@ function ActivitySessionsBarChart({activitySessions}) {
 
     const [cursorX, setCursorX] = useState(-1000)
     const onMouseMove = hoveredData => {
-    // console.log(hoveredData);
+    //console.log(hoveredData);
         if (hoveredData && hoveredData.activeCoordinate) {
             const positionX =  hoveredData.activeCoordinate.x
             setCursorX(positionX)
@@ -45,7 +45,7 @@ function ActivitySessionsBarChart({activitySessions}) {
                 >
                 <CartesianGrid stroke="#DEDEDE" strokeDasharray="2 2 2" vertical={false} />
                 <XAxis dataKey="day" tickFormatter={numberOfDay} padding={{ left: -45, right: -45 }} stroke="#DEDEDE" tick={{fill: '#9B9EAC', fontSize:'14', fontWeight:'500'}} dy={16} />
-                <rect width={56} height="100%" x={cursorX - 56/2} y={0} fill= "#C4C4C4" opacity={0.5} />
+                <rect width={56} height="54%" x={cursorX - 56/2} y={95} fill= "#C4C4C4" opacity={0.5} />
                 <YAxis yAxisId="left" orientation="right" axisLine={false} tickLine={false} tick={{fill: '#9B9EAC', fontSize:'14', fontWeight:'500'}} type="number" domain={['dataMin - 1', 'dataMax + 1']} dx={45} />
                 <YAxis yAxisId="right" orientation="left" axisLine={false} tickLine={false} tick={false} />
                 <Tooltip offset={20} cursor={false} /*cursor={{ fill: '#C4C4C4', opacity: 0.5, width: 56 }}*/ content={<CustomTooltipBarChart />} />
