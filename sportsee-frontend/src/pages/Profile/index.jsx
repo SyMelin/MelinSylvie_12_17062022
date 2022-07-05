@@ -9,7 +9,7 @@ import '../../styles/Profile.css'
 function Profile() {
 
     //const {userId}  = useParams()
-    const {userId} = {userId: 12} //get from URL params
+    const {userId} = {userId: 18} //get from URL params
     const { data, isLoading, error } = useFetch(Object.values(urls(userId)))
 
     /* EVENT ON RESIZE */

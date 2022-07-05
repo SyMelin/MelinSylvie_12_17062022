@@ -33,17 +33,19 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
 
   const [perc, setPerc] = useState(0);
   const [cursorX, setCursorX] = useState(-1000)
+  const [cursorY, setCursorY] = useState(0)
   const onMouseMove = hoveredData => {
    // console.log(hoveredData);
-    if (hoveredData && hoveredData.activePayload) {
-      const hoveredX = hoveredData.activePayload[0].payload.day;
+    if (hoveredData && hoveredData.activePayload && hoveredData.activeCoordinate) {
+      const hoveredX = hoveredData.activePayload[0].payload.day
      // console.log('hoveredX', hoveredX)
-      const index = averageSessions.findIndex(d => d.day === hoveredX);
+      const index = averageSessions.findIndex(d => d.day === hoveredX)
+      const percentage = ((averageSessions.length - index - 1) * 100) / (averageSessions.length - 1)
       const positionX =  hoveredData.activeCoordinate.x
-      const percentage = ((averageSessions.length - index - 1) * 100) / (averageSessions.length - 1);
+      const positionY =  hoveredData.activeCoordinate.y
 
       setCursorX(positionX)
-     // console.log(positionX)
+      setCursorY(positionY)
       setPerc(100 - percentage)
      // console.log(perc)
     }
@@ -51,6 +53,7 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
 
   const onMouseOut = () => {
     setCursorX(-1000)
+    setCursorY(0)
     setPerc(0)
   };
 
@@ -72,12 +75,13 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
                     <stop offset={`${100 / 0.4032}%`} stopColor="#FFFFFF" />
                   </linearGradient>
                 </defs>
-                <Line type="natural" dataKey="sessionLength" stroke="url(#colorUv)" strokeWidth={5} dot={false} activeDot={{ stroke: "rgba(255, 255, 255, 0.1983)", strokeWidth: '10', fill: "#FFFFFF", r: 4 }} />
+                <Line type="natural" dataKey="sessionLength" stroke="url(#colorUv)" strokeWidth={2} dot={false} activeDot={{ stroke: "rgba(255, 255, 255, 0.1983)", strokeWidth: '10', fill: "#FFFFFF", r: 4 }} />
                 <XAxis dataKey="day" tickFormatter={dayShort} axisLine={false} tickLine={false} tick={{fill: '#FFFFFF', fontSize:'12', fontWeight:'500', opacity:'0.5'}} dy={19.5} />
                 <YAxis axisLine={false} tickLine={false} tick={false} />
-                <Tooltip /*cursor={<CustomCursor />}*/ cursor={false} content={<CustomTooltip />} />
-                <text x="34" y="29" dominantBaseline="hanging" fontSize="15" fontWeight="500" fill="#FFFFFF" opacity={0.5}><tspan x="34" y="29">Durée moyenne des</tspan><tspan x="34" y="53">sessions</tspan></text>
                 <rect width="110%" height="100%" x={cursorX} y={0} fill= "#000000" opacity={0.1} />
+                <Tooltip /*cursor={<CustomCursor />}*//*offset={10}*/position={{x: (cursorX < ((chartWrapper - 60) / 3) - 50) ? cursorX + 10 : cursorX - 50, y: cursorY - 50}} cursor={false} content={<CustomTooltip />} />
+                <text x="34" y="29" dominantBaseline="hanging" fontSize="15" fontWeight="500" fill="#FFFFFF" opacity={0.5}><tspan x="34" y="29">Durée moyenne des</tspan><tspan x="34" y="53">sessions</tspan></text>
+                
             </LineChart>
     )
 }

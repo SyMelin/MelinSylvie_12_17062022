@@ -21,17 +21,20 @@ function ActivitySessionsBarChart({activitySessions, chartWrapper, dimensions}) 
     }
 
     const [cursorX, setCursorX] = useState(-1000)
+    const [cursorY, setCursorY] = useState(0)
     const onMouseMove = hoveredData => {
     //console.log(hoveredData);
         if (hoveredData && hoveredData.activeCoordinate) {
             const positionX =  hoveredData.activeCoordinate.x
+            const positionY =  hoveredData.activeCoordinate.y
             setCursorX(positionX)
-            //console.log(positionX)
+            setCursorY(positionY)
         }
     };
 
     const onMouseOut = () => {
         setCursorX(-1000)
+        setCursorY(0)
     };
 
     return (
@@ -49,7 +52,7 @@ function ActivitySessionsBarChart({activitySessions, chartWrapper, dimensions}) 
                 <rect width={56} height="54%" x={cursorX - 56/2} y={95} fill= "#C4C4C4" opacity={0.5} />
                 <YAxis yAxisId="left" orientation="right" axisLine={false} tickLine={false} tick={{fill: '#9B9EAC', fontSize:'14', fontWeight:'500'}} type="number" domain={['dataMin - 1', 'dataMax + 1']} dx={45} />
                 <YAxis yAxisId="right" orientation="left" axisLine={false} tickLine={false} tick={false} />
-                <Tooltip offset={20} cursor={false} /*cursor={{ fill: '#C4C4C4', opacity: 0.5, width: 56 }}*/ content={<CustomTooltipBarChart />} />
+                <Tooltip /*offset={20}*/ position={{x: (cursorX < (chartWrapper - 200)) ? cursorX + 20 : cursorX - 50, y: cursorY - 80}} cursor={false} /*cursor={{ fill: '#C4C4C4', opacity: 0.5, width: 56 }}*/ content={<CustomTooltipBarChart />} />
                 <Legend
                     iconType='circle'
                     iconSize='8'
