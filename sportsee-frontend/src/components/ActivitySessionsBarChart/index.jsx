@@ -1,4 +1,4 @@
-import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import { useState } from 'react';
 import PropTypes from 'prop-types'
 import '../../styles/ActivitySessionsBarChart.css'
@@ -26,7 +26,7 @@ function ActivitySessionsBarChart({activitySessions, chartWrapper, dimensions}) 
         if (hoveredData && hoveredData.activeCoordinate) {
             const positionX =  hoveredData.activeCoordinate.x
             setCursorX(positionX)
-            // console.log(positionX)
+            //console.log(positionX)
         }
     };
 
@@ -37,9 +37,8 @@ function ActivitySessionsBarChart({activitySessions, chartWrapper, dimensions}) 
     return (
             <BarChart
                 data={activitySessions}
-               /* width={dimensions.width * 0.55}*/
                 width={chartWrapper}
-                height={320}
+                height={chartWrapper * 0.383}
                 margin={{top: 95, right: 29, left: 0, bottom: 23}}
                 barGap={8}
                 onMouseMove={onMouseMove}

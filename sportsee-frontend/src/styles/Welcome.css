@@ -1,5 +1,6 @@
 .welcome {
-    width: 100%;
+    width: 75%;
+    border: 1px solid blue;
 }
 
 .welcome__title {

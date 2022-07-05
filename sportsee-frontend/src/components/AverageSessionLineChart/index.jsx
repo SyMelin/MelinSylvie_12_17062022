@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Rectangle } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 import { useState } from 'react';
 import PropTypes from 'prop-types'
 import '../../styles/CustomTooltip.css'
@@ -56,8 +56,8 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
 
     return (
             <LineChart 
-              width={chartWrapper / 3}
-              height={300}
+              width={(chartWrapper - 60) / 3}
+              height={chartWrapper * 0.315}
               data={averageSessions}
               margin={{ top: 80, right: 0, bottom: 50, left: -50 }}
               padding={0}

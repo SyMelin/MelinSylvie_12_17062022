@@ -6,19 +6,19 @@ import ScoreRadialBarChart from "../../components/ScoreRadialBarChart"
 
 function ChartWrapper({ user, dimensions }) {
     console.log(dimensions.width)
-    let chartWrapper =  dimensions.width * 0.55
+    let chartWrapper =  dimensions.width * 0.58
  return (
     <div className="wrapper" style={{width:ChartWrapper}}>
-        <div className="graph1">
+        <div className="chart1">
             <ActivitySessionsBarChart activitySessions={user.activity.sessions} chartWrapper={chartWrapper} />
         </div>
-        <div className="graph2">
+        <div className="chart2">
             <AverageSessionLineChart averageSessions={user.averageSessions.sessions} chartWrapper={chartWrapper} dimensions={dimensions}/>
         </div>
-        <div className="graph3">
+        <div className="chart3">
             <PerformanceRadarChart performance={user.performance} chartWrapper={chartWrapper} dimensions={dimensions} />
         </div>
-        <div className="graph4">
+        <div className="chart4">
             <ScoreRadialBarChart todayScore={user.todayScore} chartWrapper={chartWrapper} dimensions={dimensions} /> 
         </div>  
     </div>

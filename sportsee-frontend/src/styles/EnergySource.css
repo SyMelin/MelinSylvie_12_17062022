@@ -6,6 +6,8 @@
     padding: 2em;
     background-color: #FBFBFB;
     border-radius: 0.3125em;
+    max-width: 258px;
+
 }
 
 .energySource__text p {
