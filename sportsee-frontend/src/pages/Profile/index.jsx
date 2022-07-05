@@ -26,7 +26,7 @@ function Profile() {
             height: window.innerHeight,
             width: window.innerWidth
             })
-            console.log('test', dimensions )
+            //console.log('test', dimensions )
         }
         window.addEventListener('resize', handleResize)
         return _ => {
