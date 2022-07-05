@@ -1,11 +1,12 @@
 import { RadialBarChart, RadialBar, Label, ResponsiveContainer } from 'recharts';
 import PropTypes from 'prop-types'
 import '../../styles/ScoreRadialBarChart.css'
+import ChartWrapper from '../ChartWrapper';
 
 function SRBCCustomLabel({todayScore}) {
     return (
         <g>
-            <foreignObject x="23%" y="23%" width="54%" height="54%">
+            <foreignObject x="25%" y="14%" width="9.375em" height="9.375em">
             <div className='SRBCCustomLabel'>
                <p className='SRBCscore'>{todayScore * 100}%</p>
                <p className='SRBCtext'>de votre<br />objectif</p> 
@@ -15,7 +16,7 @@ function SRBCCustomLabel({todayScore}) {
     ) 
 }
 
-function ScoreRadialBarChart({todayScore, dimensions}) {
+function ScoreRadialBarChart({todayScore, chartWrapper, dimensions}) {
     const arrayScore = [
         {score: 1, fill: "#FFFFFF"}, //reference = 100%
         {score: todayScore, fill: "#FF0000"}
@@ -23,10 +24,12 @@ function ScoreRadialBarChart({todayScore, dimensions}) {
 
     return (
             <RadialBarChart
-               width={dimensions.width * 0.18}
+                width={chartWrapper / 3}
                 height={400}
-                cx="50%"
-                cy="50%"
+                cx="52%"
+                cy="33%"
+               /* cx="50%"
+                cy="50%"*/
                 innerRadius="60%"
                 outerRadius="80%"
                 barSize={10}
@@ -42,7 +45,7 @@ function ScoreRadialBarChart({todayScore, dimensions}) {
                 >
                 </RadialBar>
                 <text x="30" y="24" dominantBaseline="hanging" fontSize="15" fontWeight="500">Score</text>
-            </RadialBarChart>      
+            </RadialBarChart>
     )
 }
 

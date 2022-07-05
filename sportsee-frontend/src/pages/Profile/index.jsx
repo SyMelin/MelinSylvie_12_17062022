@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react"
 import Welcome from "../../components/Welcome"
-import ActivitySessionsBarChart from "../../components/ActivitySessionsBarChart"
-import AverageSessionLineChart from "../../components/AverageSessionLineChart"
-import PerformanceRadarChart from "../../components/PerformanceRadarChart"
-import ScoreRadialBarChart from "../../components/ScoreRadialBarChart"
+import ChartWrapper from "../../components/ChartWrapper"
 import EnergySourcesCount from "../../components/EnergySourcesCount"
 import urls from "../../utils/constantes/urls"
 import { useFetch } from '../../utils/hooks'
@@ -49,20 +46,10 @@ function Profile() {
                     userName={user.mainData.userInfos.firstName}
                     todayScore={user.todayScore}
                 />
-                <div className="wrapper">
-                    <div className="graph1">
-                        <ActivitySessionsBarChart activitySessions={user.activity.sessions} dimensions={dimensions} />
-                    </div>
-                    <div className="graph2">
-                        <AverageSessionLineChart averageSessions={user.averageSessions.sessions} dimensions={dimensions}/>
-                    </div>
-                    <div className="graph3">
-                        <PerformanceRadarChart performance={user.performance} dimensions={dimensions} />
-                    </div>
-                    <div className="graph4">
-                        <ScoreRadialBarChart todayScore={user.todayScore} dimensions={dimensions} /> 
-                    </div>  
-                </div>
+                <ChartWrapper
+                    user={user}
+                    dimensions={dimensions}
+                />
                 <EnergySourcesCount
                     keyData={user.keyData}
                 />

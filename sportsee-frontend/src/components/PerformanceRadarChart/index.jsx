@@ -3,7 +3,7 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } fro
 import PropTypes from 'prop-types'
 import '../../styles/PerformanceRadarChart.css'
 
-function PerformanceRadarChart({performance, dimensions}) {
+function PerformanceRadarChart({performance, chartWrapper, dimensions}) {
     const kindNamesEN = performance.kind
 
     const kindNamesENtoFR ={
@@ -35,10 +35,12 @@ function PerformanceRadarChart({performance, dimensions}) {
 
     return (
             <RadarChart
-                width={dimensions.width * 0.18}
+                width={chartWrapper / 3}
                 height={400}
                 cx="52%"
                 cy="33%"
+               /* cx="50%"
+                cy="50%"*/
                 outerRadius="70%"
                 data={[...performance.data].reverse()}
                 >
