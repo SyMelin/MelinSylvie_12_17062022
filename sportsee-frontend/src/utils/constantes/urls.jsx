@@ -5,7 +5,7 @@ const urls = function (userId) {
         mainData: '',
         activity: '/activity',
         averageSessions: '/average-sessions',
-        performance: '/performance',
+        activities: '/activities',
         todayScore: '/today-score',
         keyData: '/key-data'
     }

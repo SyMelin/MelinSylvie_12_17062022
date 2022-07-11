@@ -1,10 +1,10 @@
 
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts'
 import PropTypes from 'prop-types'
-import '../../styles/PerformanceRadarChart.css'
+import '../../styles/ActivitiesRadarChart.css'
 
-function PerformanceRadarChart({performance, chartWrapper}) {
-    const kindNamesEN = performance.kind
+function ActivitiesRadarChart({activities, chartWrapper}) {
+    const kindNamesEN = activities.kind
 
     const kindNamesENtoFR ={
         cardio: 'Cardio',
@@ -40,17 +40,17 @@ function PerformanceRadarChart({performance, chartWrapper}) {
                 cx="50%"
                 cy="50%"
                 outerRadius="70%"
-                data={[...performance.data].reverse()}
+                data={[...activities.data].reverse()}
                 >
                 <PolarGrid stroke="#FFFFFF" radialLines={false} />
                 <PolarAngleAxis dataKey="kind" tickFormatter={kindToName} stroke="#FFFFFF" tickLine={false} tick={props => customPolarAngleAxis(props)} />
-                <Radar name="userPerformance" dataKey="value" fill="#FF0101" fillOpacity={0.7}  />
+                <Radar name="userActivities" dataKey="value" fill="#FF0101" fillOpacity={0.7}  />
             </RadarChart>
     )
 }
 
-PerformanceRadarChart.propTypes = {
-    performance: PropTypes.object
+ActivitiesRadarChart.propTypes = {
+    activities: PropTypes.object
 }
 
-export default PerformanceRadarChart
+export default ActivitiesRadarChart

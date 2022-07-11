@@ -1,6 +1,6 @@
 import ActivitySessionsBarChart from "../../components/ActivitySessionsBarChart"
 import AverageSessionLineChart from "../../components/AverageSessionLineChart"
-import PerformanceRadarChart from "../../components/PerformanceRadarChart"
+import ActivitiesRadarChart from "../../components/ActivitiesRadarChart"
 import ScoreRadialBarChart from "../../components/ScoreRadialBarChart"
 
 
@@ -16,7 +16,7 @@ function ChartWrapper({ user, dimensions }) {
             <AverageSessionLineChart averageSessions={user.averageSessions.sessions} chartWrapper={chartWrapper} dimensions={dimensions}/>
         </div>
         <div className="chart3">
-            <PerformanceRadarChart performance={user.performance} chartWrapper={chartWrapper} dimensions={dimensions} />
+            <ActivitiesRadarChart activities={user.activities} chartWrapper={chartWrapper} dimensions={dimensions} />
         </div>
         <div className="chart4">
             <ScoreRadialBarChart todayScore={user.todayScore} chartWrapper={chartWrapper} dimensions={dimensions} /> 

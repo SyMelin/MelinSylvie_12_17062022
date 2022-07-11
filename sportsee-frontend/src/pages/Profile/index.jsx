@@ -37,8 +37,8 @@ function Profile() {
     }
     
     if (!isLoading) {
-        const [ mainData, activity, averageSessions, performance, todayScore, keyData ] = data
-        const user = { mainData, activity, averageSessions, performance, todayScore, keyData }
+        const [ mainData, activity, averageSessions, activities, todayScore, keyData ] = data
+        const user = { mainData, activity, averageSessions, activities, todayScore, keyData }
 
         return (
             <div className="dashboard">
