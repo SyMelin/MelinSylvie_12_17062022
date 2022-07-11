@@ -1,11 +1,12 @@
 .energySourcesList {
+    width: 258px;
     margin: 0;
     margin-left: 1.9375em;
     padding-left: 0;
     list-style: none;
     display: flex;
     flex-direction: column;
-    /*row-gap: 2.4375em;*/
     justify-content: space-between;
-    border: 1px solid brown;
+    background-color: brown;
+    overflow: visible;
 }

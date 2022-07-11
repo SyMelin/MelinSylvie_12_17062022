@@ -1,13 +1,19 @@
 .energySource {
     display: flex;
+    background-color: #FBFBFB;
+    border-radius: 0.3125em;
+    width: 100%; 
+    height: 20%;
+}
+
+.energySource__container {
+    margin: auto;
+    width: 12.125em;
+    height: fit-content;
+    display: flex;
     flex-direction: row;
     align-items: center;
     column-gap: 1.5em;
-    padding: 2em;
-    background-color: #FBFBFB;
-    border-radius: 0.3125em;
-    max-width: 258px;
-
 }
 
 .energySource__text p {

@@ -42,17 +42,21 @@ function Profile() {
 
         return (
             <div className="dashboard">
-                <Welcome
-                    userName={user.mainData.userInfos.firstName}
-                    todayScore={user.todayScore}
-                />
-                <ChartWrapper
-                    user={user}
-                    dimensions={dimensions}
-                />
-                <EnergySourcesCount
-                    keyData={user.keyData}
-                />
+                <div className="dashboardInner">
+                    <Welcome
+                        userName={user.mainData.userInfos.firstName}
+                        todayScore={user.todayScore}
+                    />
+                    <div className="numbersWrapper">
+                        <ChartWrapper
+                            user={user}
+                            dimensions={dimensions}
+                        />
+                        <EnergySourcesCount
+                            keyData={user.keyData}
+                        />
+                    </div>
+                </div>
             </div>
         )
     } 
