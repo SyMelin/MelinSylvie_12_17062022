@@ -15,15 +15,13 @@ function CustomTooltip({ payload, active }) {
     return null;
 }
 
-
+/*
 const CustomCursor = props => {
   const { x, y, width, height, stroke } = props;
   
-  return <rect fill="red" stroke="black" x={x} y={y} width={width} height={height}>
-    
-    
+  return <rect fill="red" stroke="black" x={x} y={y} width={width} height={height}> 
   </rect>;
-}
+}*/
 
 function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
   const dayShort = (day) => {
@@ -31,7 +29,7 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
     return weekdays[day - 1]
   }
 
-  const [perc, setPerc] = useState(0);
+  const [perc, setPerc] = useState(100);
   const [cursorX, setCursorX] = useState(-1000)
   const [cursorY, setCursorY] = useState(0)
   const onMouseMove = hoveredData => {
@@ -54,7 +52,7 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
   const onMouseOut = () => {
     setCursorX(-1000)
     setCursorY(0)
-    setPerc(0)
+    setPerc(100)
   };
 
     return (
@@ -69,14 +67,14 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
               >
                 <defs>
                   <linearGradient id="colorUv" x1="0%" y1="0" x2="100%" y2="0">
-                    <stop offset="0%" stopColor="rgb(255, 255, 255, 0.4032" />
-                    <stop offset={`${perc / 0.4032}%`} stopColor="#FFFFFF" />
-                    <stop offset={`${perc / 0.4032}%`} stopColor="#FFFFFF" />
-                    <stop offset={`${100 / 0.4032}%`} stopColor="#FFFFFF" />
+                    <stop offset="0%" stopColor="rgba(255, 255, 255, 0.4032)" />
+                    <stop offset={`${perc - 30}%`} stopColor="rgba(255, 255, 255, 0.4532"/>
+                    <stop offset={`${perc + 10}%`} stopColor={`rgba(255, 255, 255, ${0.4032 + 1 - perc / 100})`} />
+                    <stop offset={`${100}%`} stopColor="#FFFFFF" />
                   </linearGradient>
                 </defs>
                 <Line type="natural" dataKey="sessionLength" stroke="url(#colorUv)" strokeWidth={2} dot={false} activeDot={{ stroke: "rgba(255, 255, 255, 0.1983)", strokeWidth: '10', fill: "#FFFFFF", r: 4 }} />
-                <XAxis dataKey="day" tickFormatter={dayShort} axisLine={false} tickLine={false} tick={{fill: '#FFFFFF', fontSize:'12', fontWeight:'500', opacity:'0.5'}} dy={19.5} />
+                <XAxis dataKey="day" tickFormatter={dayShort} axisLine={false} tickLine={false} tick={{fill: '#FFFFFF', fontSize:'12', fontWeight:'500', opacity:'0.5'}} dy={35} />
                 <YAxis axisLine={false} tickLine={false} tick={false} />
                 <rect width="110%" height="100%" x={cursorX} y={0} fill= "#000000" opacity={0.1} />
                 <Tooltip /*cursor={<CustomCursor />}*//*offset={10}*/position={{x: (cursorX < ((chartWrapper - 60) / 3) - 50) ? cursorX + 10 : cursorX - 50, y: cursorY - 50}} cursor={false} content={<CustomTooltip />} />

@@ -5,7 +5,7 @@ import ScoreRadialBarChart from "../../components/ScoreRadialBarChart"
 
 
 function ChartWrapper({ user, dimensions }) {
-    console.log(dimensions.width)
+    //console.log(dimensions.width)
     let chartWrapper =  dimensions.width * 0.58
  return (
     <div className="chartWrapper" style={{width:ChartWrapper}}>
