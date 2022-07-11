@@ -2,6 +2,8 @@ import React from 'react';
 import Header from '../../components/Header'
 import NavVertical from '../../components/NavVertical'
 import Profile from '../../pages/Profile';
+import sportsList from '../../utils/constantes/sportsList'
+
 import '../../styles/App.css';
 
 function App() {
@@ -9,7 +11,7 @@ function App() {
     <React.Fragment>
       <Header />
       <main className='main'>
-        <NavVertical />
+        <NavVertical sportsList={sportsList}/>
         <Profile />
       </main>
       
