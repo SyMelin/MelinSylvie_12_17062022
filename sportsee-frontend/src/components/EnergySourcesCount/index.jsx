@@ -1,20 +1,18 @@
 import PropTypes from 'prop-types'
-import EnergySource from '../EnergySource'
+import EnergySourceListItem from '../EnergySourceListItem'
 import '../../styles/EnergySourcesCount.css'
 
 function EnergySourcesCount({keyData}) {
     const data = Object.entries(keyData)
   //  console.log(data)
     return (
-        <aside>
-            <ul className='energySourcesList'>
-            {data.map((element, index) => <EnergySource
+        <ul className='energySourcesList'>
+            {data.map((element, index) => <EnergySourceListItem
                                             key={`${element}-${index}`}
                                             element = {element}
                                         />         
             )}
-            </ul>
-        </aside>
+        </ul>
     )
 }
 

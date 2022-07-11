@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types'
-import '../../styles/IconListItem.css'
+import '../../styles/IconLinkListItem.css'
 
-function IconListItem({icon}) {
+function IconLinkListItem({icon}) {
     return (
         <li className="iconListItem"><a className='nav__link' href='#'><img src={icon} alt="" className='icon'/></a></li>
     )
 }
 
-IconListItem.propTypes = {
+IconLinkListItem.propTypes = {
     icon: PropTypes.string
 }
 
-export default IconListItem
+export default IconLinkListItem

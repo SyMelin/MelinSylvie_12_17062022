@@ -5,5 +5,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    row-gap: 2.4375em;
+    /*row-gap: 2.4375em;*/
+    justify-content: space-between;
+    border: 1px solid brown;
 }

@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types'
 import energySources from '../../utils/constantes/energySources'
-import '../../styles/EnergySource.css'
+import '../../styles/EnergySourceListItem.css'
 
-function EnergySource({element}) {
+function EnergySourceListItem({element}) {
     const elementType = element[0].replace('Count', '')
     const elementCount = element[1]
 
     return (
-        <li className='energySource'>
-            <img className='energySource__img' alt='' src={`${energySources[elementType].img}`} />
+        <li className={`energySource energySource--${elementType}`}>
+            <div className='energySource__frame'>
+                <img className='energySource__img' alt='' src={`${energySources[elementType].img}`} />
+            </div>
             <div className='energySource__text'>
                 { elementType === 'calorie' ?
                     elementCount >= 1000 ? <p className="energySource__count">{new Intl.NumberFormat('en-UK').format(elementCount)}kCal</p>
@@ -21,8 +23,8 @@ function EnergySource({element}) {
     )
 }
 
-EnergySource.propTypes = {
+EnergySourceListItem.propTypes = {
     element: PropTypes.array,
 }
 
-export default EnergySource
+export default EnergySourceListItem

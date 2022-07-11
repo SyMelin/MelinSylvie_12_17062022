@@ -1,0 +1,64 @@
+.energySource {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 1.5em;
+    padding: 2em;
+    background-color: #FBFBFB;
+    border-radius: 0.3125em;
+    max-width: 258px;
+
+}
+
+.energySource__text p {
+    margin: 0;
+}
+
+.energySource__count {
+    font-weight: 700;
+    font-size: 1.25em;
+    line-height: 1.5em;
+    color: #282D30;
+}
+
+.energySource__type {
+    font-weight: 400;
+    font-size: 0.875em;
+    line-height: 1.5em;
+    color: #74798C;
+}
+
+.energySource__img {
+    width: 3.75em;
+    height: 3.75em;
+    border-radius: 0.375em;
+}
+
+.energySource--calorie .energySource__frame {
+    background-color: rgba(255, 0, 0, 0.07);
+}
+
+.energySource--protein .energySource__frame {
+    background-color: rgb(74, 184, 255, 0.1);
+}
+
+.energySource--carbohydrate .energySource__frame {
+    background-color: rgba(249, 206, 35, 0.1);
+}
+
+.energySource--lipid .energySource__frame {
+    background-color: rgba(253, 81, 129, 0.1);
+}
+
+.energySource__frame {
+    width: 3.75em;
+    height: 3.75em;
+    border-radius: 0.375em;
+    display: flex;
+}
+
+.energySource__img {
+    width: 33.33%;
+    height: 33.33%;
+    margin: auto;
+}

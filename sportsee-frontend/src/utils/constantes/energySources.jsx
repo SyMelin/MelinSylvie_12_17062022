@@ -1,7 +1,7 @@
-import caloriesIcon from '../../assets/calories_icon.svg'
-import proteinIcon from '../../assets/protein_icon.svg'
-import carbsIcon from '../../assets/carbs_icon.svg'
-import fatIcon from '../../assets/fat_icon.svg'
+import caloriesIcon from '../../assets/fire.svg'
+import proteinIcon from '../../assets/chicken.svg'
+import carbsIcon from '../../assets/apple.svg'
+import fatIcon from '../../assets/cheeseburger.svg'
 
 
 const energySources = {
