@@ -1,4 +1,4 @@
-import { RadialBarChart, RadialBar, Label } from 'recharts';
+import { RadialBarChart, RadialBar } from 'recharts';
 import PropTypes from 'prop-types'
 import '../../styles/ScoreRadialBarChart.css'
 

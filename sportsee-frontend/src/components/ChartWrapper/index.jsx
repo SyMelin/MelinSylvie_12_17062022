@@ -10,7 +10,7 @@ function ChartWrapper({ user, dimensions }) {
  return (
     <div className="chartWrapper" style={{width:ChartWrapper}}>
         <div className="chart1">
-            <ActivitySessionsBarChart activitySessions={user.activity.sessions} chartWrapper={chartWrapper} />
+            <ActivitySessionsBarChart activitySessions={user.activity.sessions} chartWrapper={chartWrapper} dimensions={dimensions} />
         </div>
         <div className="chart2">
             <AverageSessionLineChart averageSessions={user.averageSessions.sessions} chartWrapper={chartWrapper} dimensions={dimensions}/>
