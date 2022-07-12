@@ -3,7 +3,7 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts'
 import PropTypes from 'prop-types'
 import '../../styles/ActivitiesRadarChart.css'
 
-function ActivitiesRadarChart({activities, chartWrapper}) {
+function ActivitiesRadarChart({activities, chartWrapper, ratio}) {
     const kindNamesEN = activities.kind
 
     const kindNamesENtoFR ={
@@ -25,7 +25,7 @@ function ActivitiesRadarChart({activities, chartWrapper}) {
                 {...rest}
                 y={y + (y - 80) / 15}
                 x={x + (x - cx) / 100}
-                fontSize='0.75em'
+                fontSize={`${0.75 * ratio}em`}
                 fontWeight={500}
             >
                 {kindToName(payload.value)}    
