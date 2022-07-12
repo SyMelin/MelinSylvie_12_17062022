@@ -5,6 +5,8 @@
   width: 100%;
   height: 100%;
   margin: 0;
+  padding-top: 2.75em;
+  padding-bottom: 5.375em;
 }
 .dashboardInner {
   margin: auto;
