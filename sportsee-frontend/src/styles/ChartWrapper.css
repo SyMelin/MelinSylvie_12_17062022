@@ -1,0 +1,34 @@
+
+.chartWrapper {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    display: grid;
+    row-gap: 1.875em;
+    column-gap: 1.875em;
+    grid-template-rows: repeat(2, auto);
+  }
+  
+  .chart1 {
+    background-color: #FBFBFB;
+    grid-column: 1 / 4;
+    box-sizing: border-box;
+    border-radius: 0.3125em;
+  }
+  
+  .chart2, .chart3, .chart4 {
+    box-sizing: content-box;
+    border-radius: 0.3125em;
+    grid-row: 2 / 3;
+  }
+  
+  .chart2 {
+    background-color: #FF0000;
+  }
+  
+  .chart3{
+    background-color: #282D30;
+  }
+  .chart4{
+    background-color: #FBFBFB;
+  }

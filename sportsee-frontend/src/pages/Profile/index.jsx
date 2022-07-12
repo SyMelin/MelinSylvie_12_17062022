@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import Welcome from "../../components/Welcome"
 import ChartWrapper from "../../components/ChartWrapper"
-import EnergySourcesCount from "../../components/EnergySourcesCount"
 import urls from "../../utils/constantes/urls"
 import { useFetch } from '../../utils/hooks'
 import '../../styles/Profile.css'
@@ -47,15 +46,10 @@ function Profile() {
                         userName={user.mainData.userInfos.firstName}
                         todayScore={user.todayScore}
                     />
-                    <div className="numbersWrapper">
-                        <ChartWrapper
-                            user={user}
-                            dimensions={dimensions}
-                        />
-                        <EnergySourcesCount
-                            keyData={user.keyData}
-                        />
-                    </div>
+                    <ChartWrapper
+                        user={user}
+                        dimensions={dimensions}
+                    />
                 </div>
             </div>
         )

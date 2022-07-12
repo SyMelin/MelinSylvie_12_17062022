@@ -25,7 +25,7 @@ function ActivitiesRadarChart({activities, chartWrapper}) {
                 {...rest}
                 y={y + (y - 80) / 15}
                 x={x + (x - cx) / 100}
-                fontSize={12}
+                fontSize='0.75em'
                 fontWeight={500}
             >
                 {kindToName(payload.value)}    
