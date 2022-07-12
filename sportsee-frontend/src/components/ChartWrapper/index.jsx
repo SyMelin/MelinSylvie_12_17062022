@@ -23,7 +23,7 @@ function ChartWrapper({ user, dimensions }) {
                 <ActivitiesRadarChart activities={user.activities} chartWrapper={chartWrapper} dimensions={dimensions} ratio={ratio} />
             </div>
             <div className="chart4">
-                <ScoreRadialBarChart todayScore={user.todayScore} chartWrapper={chartWrapper} dimensions={dimensions} /> 
+                <ScoreRadialBarChart todayScore={user.todayScore} chartWrapper={chartWrapper} dimensions={dimensions} ratio={ratio} /> 
             </div>
             <EnergySourcesCount
                 keyData={user.keyData}

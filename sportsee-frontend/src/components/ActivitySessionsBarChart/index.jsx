@@ -47,9 +47,9 @@ function ActivitySessionsBarChart({activitySessions, chartWrapper, dimensions}) 
                 onMouseOut={onMouseOut}
                 >
                 <CartesianGrid stroke="#DEDEDE" strokeDasharray="2 2 2" vertical={false} />
-                <XAxis dataKey="day" tickFormatter={numberOfDay} padding={{ left: -45, right: -45 }} stroke="#DEDEDE" tick={{fill: '#9B9EAC', fontSize:'14', fontWeight:'500'}} dy={16} />
-                <rect width={56} height={chartWrapper * 0.383 - 168} x={cursorX - 56/2} y={99} fill= "#C4C4C4" opacity={0.5} />
-                <YAxis yAxisId="left" orientation="right" axisLine={false} tickLine={false} tick={{fill: '#9B9EAC', fontSize:'14', fontWeight:'500'}} type="number" domain={['dataMin - 1', 'dataMax + 1']} dx={40} />
+                <XAxis dataKey="day" tickFormatter={numberOfDay} padding={{ left: -45, right: -45 }} stroke="#DEDEDE" tick={{fill:'#9B9EAC', fontSize:'14', fontWeight:'500'}} dy={16} />
+                <rect width={56} height={chartWrapper * 0.383 - 168} x={cursorX - 56/2} y={99} fill="#C4C4C4" opacity={0.5} />
+                <YAxis yAxisId="left" orientation="right" axisLine={false} tickLine={false} tick={{fill:'#9B9EAC', fontSize:'14', fontWeight:'500'}} type="number" domain={['dataMin - 1', 'dataMax + 1']} dx={40} />
                 <YAxis yAxisId="right" orientation="left" axisLine={false} tickLine={false} tick={false} />
                 <Tooltip /*offset={20}*/ position={{x: (cursorX < (chartWrapper - 200)) ? cursorX + 20 : cursorX - 50, y: cursorY - 80}} cursor={false} content={<CustomTooltipBarChart />} />
                 <Legend
