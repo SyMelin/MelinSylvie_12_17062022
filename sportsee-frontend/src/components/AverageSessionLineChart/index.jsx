@@ -30,7 +30,7 @@ const CustomCursor = props => {
   </rect>;
 }*/
 
-function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
+function AverageSessionLineChart({averageSessions, chartWrapper, dimensions, ratio}) {
   const dayShort = (day) => {
     const weekdays = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
     return weekdays[day - 1]
@@ -66,7 +66,7 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
               width={(chartWrapper - 60) / 3}
               height={chartWrapper * 0.315}
               data={averageSessions}
-              margin={{ top: 90, right: 0, bottom: 50, left: -50 }}
+              margin={{ top: 90 * ratio, right: 0, bottom: 50 * ratio, left: -60 }}
               padding={0}
               onMouseMove={onMouseMove}
               onMouseOut={onMouseOut}
@@ -80,7 +80,7 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
                   </linearGradient>
                 </defs>
                 <Line type="natural" dataKey="sessionLength" stroke="url(#colorUv)" strokeWidth={2} dot={false} activeDot={{ stroke:'rgba(255, 255, 255, 0.1983)', strokeWidth:'10', fill:"#FFFFFF", r: 4 }} />
-                <XAxis dataKey="day" tickFormatter={dayShort} axisLine={false} tickLine={false} tick={{fill:'#FFFFFF', fontSize:'12', fontWeight:'500', opacity:'0.5'}} dy={35} />
+                <XAxis dataKey="day" tickFormatter={dayShort} axisLine={false} tickLine={false} tick={{fill:'#FFFFFF', fontSize:'12', fontWeight:'500', opacity:'0.5'}} dy={35 * ratio} />
                 <YAxis axisLine={false} tickLine={false} tick={false}>
                   <Label content={<CustomLabel />} />
                 </YAxis>

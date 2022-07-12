@@ -14,10 +14,10 @@ function ChartWrapper({ user, dimensions }) {
     return (
         <div className="chartWrapper">
             <div className="chart1">
-                <ActivitySessionsBarChart activitySessions={user.activity.sessions} chartWrapper={chartWrapper} dimensions={dimensions} />
+                <ActivitySessionsBarChart activitySessions={user.activity.sessions} chartWrapper={chartWrapper} dimensions={dimensions} ratio={ratio} />
             </div>
             <div className="chart2">
-                <AverageSessionLineChart averageSessions={user.averageSessions.sessions} chartWrapper={chartWrapper} dimensions={dimensions} />
+                <AverageSessionLineChart averageSessions={user.averageSessions.sessions} chartWrapper={chartWrapper} dimensions={dimensions} ratio={ratio} />
             </div>
             <div className="chart3">
                 <ActivitiesRadarChart activities={user.activities} chartWrapper={chartWrapper} dimensions={dimensions} ratio={ratio} />
