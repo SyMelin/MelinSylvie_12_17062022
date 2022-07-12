@@ -1,13 +1,13 @@
 .nav--horizontal {
-    width : 100%;
-    padding-left: 3.625em;
-    padding-right: 3.625em;
+    width : 80%;
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 .nav--horizontal ul {
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content:space-around;
     list-style-type: none;
     margin: 0;
     padding: 0;

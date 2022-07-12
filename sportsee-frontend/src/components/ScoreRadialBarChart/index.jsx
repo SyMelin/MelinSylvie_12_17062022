@@ -41,7 +41,7 @@ function ScoreRadialBarChart({todayScore, chartWrapper}) {
                     label={<SRBCCustomLabel todayScore={todayScore} />}
                 >
                 </RadialBar>
-                <text x="30" y="24" dominantBaseline="hanging" fontSize="0.9375em" fontWeight="500">Score</text>
+                <text x="10%" y="10%" dominantBaseline="hanging" fontSize="0.9375em" fontWeight="500">Score</text>
             </RadialBarChart>
     )
 }

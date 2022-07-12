@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Label } from 'recharts';
 import { useState } from 'react';
 import PropTypes from 'prop-types'
 import '../../styles/CustomTooltip.css'
@@ -13,6 +13,13 @@ function CustomTooltip({ payload, active }) {
     }
   
     return null;
+}
+
+function CustomLabel() {
+  return (
+    <text /*x="5%" y="5%" dominantBaseline="hanging"*/ fontSize="15" fontWeight="500" fill="#FFFFFF" opacity={0.5}><tspan x="13%" y="18%">Durée moyenne des</tspan><tspan x="13%" y="28%">sessions</tspan></text>
+
+  )
 }
 
 /*
@@ -60,7 +67,7 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
               width={(chartWrapper - 60) / 3}
               height={chartWrapper * 0.315}
               data={averageSessions}
-              margin={{ top: 80, right: 0, bottom: 50, left: -50 }}
+              margin={{ top: 90, right: 0, bottom: 50, left: -50 }}
               padding={0}
               onMouseMove={onMouseMove}
               onMouseOut={onMouseOut}
@@ -75,10 +82,15 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions}) {
                 </defs>
                 <Line type="natural" dataKey="sessionLength" stroke="url(#colorUv)" strokeWidth={2} dot={false} activeDot={{ stroke: "rgba(255, 255, 255, 0.1983)", strokeWidth: '10', fill: "#FFFFFF", r: 4 }} />
                 <XAxis dataKey="day" tickFormatter={dayShort} axisLine={false} tickLine={false} tick={{fill: '#FFFFFF', fontSize:'12', fontWeight:'500', opacity:'0.5'}} dy={35} />
-                <YAxis axisLine={false} tickLine={false} tick={false} />
+                <YAxis 
+                  axisLine={false}
+                  tickLine={false}
+                  tick={false}
+                  >
+                  <Label content={<CustomLabel />} />
+                </YAxis>
                 <rect width="110%" height="100%" x={cursorX} y={0} fill= "#000000" opacity={0.1} />
                 <Tooltip /*cursor={<CustomCursor />}*//*offset={10}*/position={{x: (cursorX < ((chartWrapper - 60) / 3) - 50) ? cursorX + 10 : cursorX - 50, y: cursorY - 50}} cursor={false} content={<CustomTooltip />} />
-                <text x="34" y="29" dominantBaseline="hanging" fontSize="15" fontWeight="500" fill="#FFFFFF" opacity={0.5}><tspan x="34" y="29">Durée moyenne des</tspan><tspan x="34" y="53">sessions</tspan></text>
                 
             </LineChart>
     )

@@ -10,7 +10,6 @@ function ChartWrapper({ user, dimensions }) {
     //console.log(dimensions.width)
     let chartWrapper =  dimensions.width * 0.58
     const ratio = chartWrapper / 835 //835px chartWrapper's width on 1440px website mock-up
-    console.log(ratio)
 
     return (
         <div className="chartWrapper">
