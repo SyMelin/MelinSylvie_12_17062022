@@ -19,7 +19,7 @@ function ActivitiesRadarChart({activities, chartWrapper, ratio}) {
         return kindNamesENtoFR[kindNamesEN[kind]]
     }
 
-    function customPolarAngleAxis({ payload, x, y, cx, cy, ...rest }) {
+    function CustomPolarAngleAxis({ payload, x, y, cx, cy, ...rest }) {
         return (
             <text
                 {...rest}
@@ -43,7 +43,7 @@ function ActivitiesRadarChart({activities, chartWrapper, ratio}) {
                 data={[...activities.data].reverse()}
                 >
                 <PolarGrid stroke="#FFFFFF" radialLines={false} />
-                <PolarAngleAxis dataKey="kind" tickFormatter={kindToName} stroke="#FFFFFF" tickLine={false} tick={props => customPolarAngleAxis(props)} />
+                <PolarAngleAxis dataKey="kind" tickFormatter={kindToName} stroke="#FFFFFF" tickLine={false} tick={<CustomPolarAngleAxis />} />
                 <Radar name="userActivities" dataKey="value" fill="#FF0101" fillOpacity={0.7}  />
             </RadarChart>
     )
