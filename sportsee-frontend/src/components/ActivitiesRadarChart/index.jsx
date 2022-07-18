@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts'
 import '../../styles/ActivitiesRadarChart.css'
 
-function ActivitiesRadarChart({ activities, chartWrapper, ratio }) {
+function ActivitiesRadarChart({ activities, lineChartWidth, ratio }) {
     const kindNamesEN = activities.kind
 
     const kindNamesENtoFR ={
@@ -18,7 +18,7 @@ function ActivitiesRadarChart({ activities, chartWrapper, ratio }) {
         return kindNamesENtoFR[kindNamesEN[kind]]
     }
 
-    function CustomPolarAngleAxis({ payload, x, y, cx, cy, ...rest }) {
+    function CustomPolarAngleAxisTick({ payload, x, y, cx, cy, ...rest }) {
         return (
             <text
                 {...rest}
@@ -34,8 +34,8 @@ function ActivitiesRadarChart({ activities, chartWrapper, ratio }) {
 
     return (
             <RadarChart
-                width={(chartWrapper - 60) / 3}
-                height={chartWrapper * 0.315}
+                width={(lineChartWidth - 60) / 3}
+                height={lineChartWidth * 0.315}
                 cx="50%"
                 cy="50%"
                 outerRadius="70%"
@@ -50,7 +50,7 @@ function ActivitiesRadarChart({ activities, chartWrapper, ratio }) {
                     tickFormatter={kindToName}
                     stroke="#FFFFFF"
                     tickLine={false}
-                    tick={<CustomPolarAngleAxis />}
+                    tick={<CustomPolarAngleAxisTick />}
                 />
                 <Radar
                     name="userActivities"
@@ -64,7 +64,7 @@ function ActivitiesRadarChart({ activities, chartWrapper, ratio }) {
 
 ActivitiesRadarChart.propTypes = {
     activities: PropTypes.object.isRequired,
-    chartWrapper: PropTypes.number.isRequired,
+    lineChartWidth: PropTypes.number.isRequired,
     ratio: PropTypes.number
 }
 

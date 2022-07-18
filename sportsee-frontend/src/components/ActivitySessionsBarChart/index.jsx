@@ -7,8 +7,8 @@ function CustomTooltipBarChart({ payload, active }) {
     if (active) {
         return (
             <div className='customTooltipBarChart'>
-                <p className='cTBC__text'>{`${payload[0].value}kg`}</p>
-                <p className='cTBC__text'>{`${payload[1].value}Kcal`}</p>
+                <p className='customTooltipBarChart__text'>{`${payload[0].value}kg`}</p>
+                <p className='customTooltipBarChart__text'>{`${payload[1].value}Kcal`}</p>
             </div>
         )
     }
@@ -21,11 +21,12 @@ CustomTooltipBarChart.propTypes = {
     active: PropTypes.bool
 }
 
-function CustomTooltipCursorBarChart({ cursorX, chartWrapper, ratio }) {
+
+function CustomTooltipCursorBarChart({ cursorX, lineChartWidth, ratio }) {
     return (
         <rect
             width={56}
-            height={(chartWrapper * 0.383) - 170 + (170 * (1 - ratio) / 1.23)}
+            height={(lineChartWidth * 0.383) - 170 + (170 * (1 - ratio) / 1.23)}
             x={cursorX - 56/2}
             y={100 * ratio}
             fill="#C4C4C4"
@@ -36,11 +37,12 @@ function CustomTooltipCursorBarChart({ cursorX, chartWrapper, ratio }) {
 
 CustomTooltipCursorBarChart.propTypes = {
     cursorX: PropTypes.number,
-    chartWrapper: PropTypes.number,
+    lineChartWidth: PropTypes.number,
     ratio: PropTypes.number
 }
 
-function ActivitySessionsBarChart({ activitySessions, chartWrapper, ratio }) {
+
+function ActivitySessionsBarChart({ activitySessions, lineChartWidth, ratio }) {
     const numberOfDay = (day) => { 
         return parseInt((day.split('-'))[2], 10)
     }
@@ -65,8 +67,8 @@ function ActivitySessionsBarChart({ activitySessions, chartWrapper, ratio }) {
     return (
             <BarChart
                 data={activitySessions}
-                width={chartWrapper}
-                height={chartWrapper * 0.383}
+                width={lineChartWidth}
+                height={lineChartWidth * 0.383}
                 margin={{top: 100 * ratio, right: 29, left: -10, bottom: 40 * ratio}}
                 barGap={8}
                 onMouseMove={onMouseMove}
@@ -100,8 +102,8 @@ function ActivitySessionsBarChart({ activitySessions, chartWrapper, ratio }) {
                 />
                 <Tooltip
                     content={<CustomTooltipBarChart />}
-                    cursor={<CustomTooltipCursorBarChart cursorX={cursorX} chartWrapper={chartWrapper} ratio={ratio} />}
-                    position={{x: (cursorX < (chartWrapper - 200)) ? cursorX + 20 : cursorX - 50, y: cursorY - 80}}
+                    cursor={<CustomTooltipCursorBarChart cursorX={cursorX} lineChartWidth={lineChartWidth} ratio={ratio} />}
+                    position={{x: (cursorX < (lineChartWidth - 200)) ? cursorX + 20 : cursorX - 50, y: cursorY - 80}}
                     />
                 <Legend
                     layout='horizontal'
@@ -143,7 +145,7 @@ function ActivitySessionsBarChart({ activitySessions, chartWrapper, ratio }) {
 
 ActivitySessionsBarChart.propTypes = {
     activitySessions: PropTypes.arrayOf(PropTypes.object).isRequired,
-    chartWrapper: PropTypes.number.isRequired,
+    lineChartWidth: PropTypes.number.isRequired,
     ratio: PropTypes.number
 }
 

@@ -1,7 +1,10 @@
 import { useState, useEffect } from'react'
 
-
-
+/**
+ * Send multi fetch requests in useEffect
+ * @param { Object.<String> } urls
+ * @return { Object.<isLoading: Bool, data: Array, error: Bool> } - Object of state variables
+ */
 export function useFetch(urls) {
 
     const [data, setData] = useState({})
@@ -10,7 +13,7 @@ export function useFetch(urls) {
 
     useEffect(() => {
 
-        if(!urls) return //Si url vide, le return est également vide
+        if(!urls) return //If url not defined, return nothing
 
         setLoading(true)
 
@@ -33,36 +36,3 @@ export function useFetch(urls) {
 
     return { isLoading, data, error }
 }
-
-
-/*
-export function useFetch(url) {
-
-    const [data, setData] = useState([])
-    const [isLoading, setLoading] = useState(true)
-    const [error, setError] = useState(false)
-
-    useEffect(() => {
-
-        if(!url) return //Si url vide, le return est également vide
-
-        setLoading(true)
-
-        async function fetchData() {
-            try {
-                const response = await fetch(url)
-                const data = await response.json()
-                setData(data)
-            } catch (err) {
-                console.log(err)
-                setError(true)
-            } finally {
-                setLoading(false)
-            }
-        }
-        fetchData()
-
-    }, [url])
-
-    return { isLoading, data, error }
-}*/

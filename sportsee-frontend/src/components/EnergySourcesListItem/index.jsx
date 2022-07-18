@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import energySources from '../../utils/constantes/energySources'
 import '../../styles/EnergySourceListItem.css'
 
-function EnergySourceListItem({ element }) {
+function EnergySourcesListItem({ element }) {
     const elementType = element[0].replace('Count', '')
     const elementCount = element[1]
 
@@ -25,8 +25,8 @@ function EnergySourceListItem({ element }) {
     )
 }
 
-EnergySourceListItem.propTypes = {
+EnergySourcesListItem.propTypes = {
     element: PropTypes.array.isRequired,
 }
 
-export default EnergySourceListItem
+export default EnergySourcesListItem

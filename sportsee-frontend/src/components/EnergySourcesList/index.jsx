@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
-import EnergySourceListItem from '../EnergySourceListItem'
+import EnergySourcesListItem from '../EnergySourcesListItem'
 import '../../styles/EnergySourcesCount.css'
 
-function EnergySourcesCount({ keyData, chartWrapper, dimensions }) {
-    const divWidth = dimensions.width >= 1200 ? (chartWrapper - 60) / 3 : (chartWrapper - 60) / 3 + 40
+function EnergySourcesList({ keyData, lineChartWidth, windowDimensions }) {
+    const divWidth = windowDimensions.width >= 1200 ? (lineChartWidth - 60) / 3 : (lineChartWidth - 60) / 3 + 40
     const data = Object.entries(keyData)
 
     return (
@@ -11,7 +11,7 @@ function EnergySourcesCount({ keyData, chartWrapper, dimensions }) {
             className='energySourcesList'
             style={{width: divWidth}}
         >
-            { data.map((element, index) => <EnergySourceListItem
+            { data.map((element, index) => <EnergySourcesListItem
                                                 key={`${element}-${index}`}
                                                 element = {element}
                                             />         
@@ -20,10 +20,10 @@ function EnergySourcesCount({ keyData, chartWrapper, dimensions }) {
     )
 }
 
-EnergySourcesCount.propTypes = {
+EnergySourcesList.propTypes = {
     keyData: PropTypes.object.isRequired,
-    chartWrapper: PropTypes.number,
+    lineChartWidth: PropTypes.number,
     dimensions: PropTypes.object
 }
 
-export default EnergySourcesCount
+export default EnergySourcesList

@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types'
 import '../../styles/Welcome.css'
 
-//Comment est défini l'objectif 'scoreGoal' ?????? Ici , fixé arbitrairement à 0.10
 function Welcome({ userName, todayScore }) {
-    const scoreGoal = 0.10
+    const scoreGoal = 0.10 //Here scoreGoal is arbitrarily set at 0.10. However it should be defined (by the user maybe?)
 
     return (
         <div className="welcome">

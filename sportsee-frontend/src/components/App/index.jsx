@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import Header from '../../components/Header'
 import NavVertical from '../../components/NavVertical'
-import Profile from '../../pages/Profile';
+import Profile from '../../pages/Profile'
 import sportsList from '../../utils/constantes/sportsList'
 
-import '../../styles/App.css';
+import '../../styles/App.css'
 
 function App() {
   return (
@@ -19,4 +19,4 @@ function App() {
   )
 }
 
-export default App;
+export default App

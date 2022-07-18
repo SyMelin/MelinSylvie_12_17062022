@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types'
 import { LineChart, Line, XAxis, YAxis, Tooltip, Label } from 'recharts'
-import '../../styles/CustomTooltip.css'
+import '../../styles/AverageSessionLineChart.css'
 
 function CustomTooltipLineChart({ payload, active }) {
     if (active) {
       return (
-        <div className="custom-tooltip">
+        <div className="customTooltipLineChart">
           <p className="label">{`${payload[0].value} min`}</p>
         </div>
       )
@@ -19,6 +19,7 @@ CustomTooltipLineChart.propTypes = {
   payload: PropTypes.array,
   active: PropTypes.bool
 }
+
 
 function CustomTooltipCursorLineChart({ cursorX }) {
   return (
@@ -36,6 +37,7 @@ CustomTooltipCursorLineChart.propTypes = {
   cursorX: PropTypes.number
 }
 
+
 function CustomLabelLineChart() {
   return (
     <text
@@ -49,7 +51,8 @@ function CustomLabelLineChart() {
     </text>
   )
 }
-function AverageSessionLineChart({ averageSessions, chartWrapper, ratio }) {
+
+function AverageSessionLineChart({ averageSessions, lineChartWidth, ratio }) {
   const [perc, setPerc] = useState(100);
   const [cursorX, setCursorX] = useState(-1000)
   const [cursorY, setCursorY] = useState(0)
@@ -83,8 +86,8 @@ function AverageSessionLineChart({ averageSessions, chartWrapper, ratio }) {
 
   return (
     <LineChart 
-      width={(chartWrapper - 60) / 3}
-      height={chartWrapper * 0.315}
+      width={(lineChartWidth - 60) / 3} // 60 and 3 are found from the website mock-up
+      height={lineChartWidth * 0.315} //0.315 is found from the website mock-up
       data={averageSessions}
       margin={{ top: 90 * ratio, right: 0, bottom: 50 * ratio, left: -60 }}
       padding={0}
@@ -94,7 +97,7 @@ function AverageSessionLineChart({ averageSessions, chartWrapper, ratio }) {
         <defs>
           <linearGradient id="colorUv" x1="0%" y1="0" x2="100%" y2="0">
             <stop offset="0%" stopColor="rgba(255, 255, 255, 0.4032)" />
-            <stop offset={`${perc - 30}%`} stopColor="rgba(255, 255, 255, 0.4532"/>
+            <stop offset={`${perc - 30}%`} stopColor="rgba(255, 255, 255, 0.4032"/>
             <stop offset={`${perc + 10}%`} stopColor={`rgba(255, 255, 255, ${0.4032 + 1 - perc / 100})`} />
             <stop offset={`${100}%`} stopColor="#FFFFFF" />
           </linearGradient>
@@ -126,7 +129,7 @@ function AverageSessionLineChart({ averageSessions, chartWrapper, ratio }) {
         <Tooltip
           content={<CustomTooltipLineChart />}
           cursor={<CustomTooltipCursorLineChart cursorX={cursorX} />}
-          position={{x: (cursorX < ((chartWrapper - 60) / 3) - 50) ? cursorX + 10 : cursorX - 50, y: cursorY - 50}}
+          position={{x: (cursorX < ((lineChartWidth - 60) / 3) - 50) ? cursorX + 10 : cursorX - 50, y: cursorY - 50}}
         />
     </LineChart>
   )
@@ -134,7 +137,7 @@ function AverageSessionLineChart({ averageSessions, chartWrapper, ratio }) {
 
 AverageSessionLineChart.propTypes = {
     averageSessions: PropTypes.arrayOf(PropTypes.object).isRequired,
-    chartWrapper: PropTypes.number.isRequired,
+    lineChartWidth: PropTypes.number.isRequired,
     ratio: PropTypes.number
 }
 

@@ -1,28 +1,28 @@
 import { useEffect, useState } from "react"
 import Welcome from "../../components/Welcome"
-import ChartWrapper from "../../components/ChartWrapper"
+import NumbersWrapper from "../../components/NumbersWrapper"
 import urls from "../../utils/constantes/urls"
 import { useFetch } from '../../utils/hooks'
 import '../../styles/Profile.css'
 
 function Profile() {
-
-    //const {userId}  = useParams()
-    const {userId} = {userId: 12} //get from URL params
+    const { userId } = {userId: 12} //to be substituted by " const {userId}  = useParams() " when the router is set
     const { data, isLoading, error } = useFetch(Object.values(urls(userId)))
 
-    /* EVENT ON RESIZE */
-    const [dimensions, setDimensions] = useState({ 
+    // EVENT ON RESIZE :
+    // Recharts' ResponsiveContainer not working
+    // so use the state variable 'dimensions' and fonction 'handleResize() in useEffect
+    const [windowDimensions, setWindowDimensions] = useState({ 
         height: window.innerHeight,
         width: window.innerWidth
     })
+    
     useEffect(() => {
         function handleResize() {
-            setDimensions({
+            setWindowDimensions({
             height: window.innerHeight,
             width: window.innerWidth
             })
-            //console.log('test', dimensions )
         }
         window.addEventListener('resize', handleResize)
         return _ => {
@@ -46,9 +46,9 @@ function Profile() {
                         userName={user.mainData.userInfos.firstName}
                         todayScore={user.todayScore}
                     />
-                    <ChartWrapper
+                    <NumbersWrapper
                         user={user}
-                        dimensions={dimensions}
+                        windowDimensions={windowDimensions}
                     />
                 </div>
             </div>

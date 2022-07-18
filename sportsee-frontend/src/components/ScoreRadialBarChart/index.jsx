@@ -2,7 +2,7 @@ import { RadialBarChart, RadialBar } from 'recharts';
 import PropTypes from 'prop-types'
 import '../../styles/ScoreRadialBarChart.css'
 
-function SRBCCustomLabel({ todayScore, ratio }) {
+function ScoreRadialBarChartCustomLabel({ todayScore, ratio }) {
     return (
         <g>
             <foreignObject x="20%" y="20%" width="60%" height="60%">
@@ -15,12 +15,13 @@ function SRBCCustomLabel({ todayScore, ratio }) {
     ) 
 }
 
-SRBCCustomLabel.propTypes = {
+ScoreRadialBarChartCustomLabel.propTypes = {
     todayScore: PropTypes.number.isRequired,
     ratio: PropTypes.number
 }
 
-function ScoreRadialBarChart({ todayScore, chartWrapper, ratio }) {
+
+function ScoreRadialBarChart({ todayScore, lineChartWidth, ratio }) {
     const arrayScore = [
         {score: 1, fill: "#FFFFFF"}, //reference = 100%
         {score: todayScore, fill: "#FF0000"}
@@ -28,8 +29,8 @@ function ScoreRadialBarChart({ todayScore, chartWrapper, ratio }) {
 
     return (
             <RadialBarChart
-                width={(chartWrapper - 60) / 3}
-                height={chartWrapper * 0.315}
+                width={(lineChartWidth - 60) / 3}
+                height={lineChartWidth * 0.315}
                 cx="50%"
                 cy="50%"
                 innerRadius="60%"
@@ -43,7 +44,7 @@ function ScoreRadialBarChart({ todayScore, chartWrapper, ratio }) {
                 <RadialBar
                     dataKey="score"
                     cornerRadius={50}
-                    label={<SRBCCustomLabel todayScore={todayScore} ratio={ratio} />}
+                    label={<ScoreRadialBarChartCustomLabel todayScore={todayScore} ratio={ratio} />}
                 >
                 </RadialBar>
                 <text
@@ -61,7 +62,7 @@ function ScoreRadialBarChart({ todayScore, chartWrapper, ratio }) {
 
 ScoreRadialBarChart.propTypes = {
     todayScore: PropTypes.number,
-    chartWrapper: PropTypes.number.isRequired,
+    lineChartWidth: PropTypes.number.isRequired,
     ratio: PropTypes.number
 }
 
