@@ -3,7 +3,7 @@ import IconLinkListItem from '../IconLinkListItem'
 import '../../styles/NavVertical.css'
 
 
-function NavVertical({sportsList}) {
+function NavVertical({ sportsList }) {
     return (
         <aside className='nav--vertical'>
             <ul className='iconsList'>

@@ -1,9 +1,8 @@
-
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts'
 import PropTypes from 'prop-types'
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts'
 import '../../styles/ActivitiesRadarChart.css'
 
-function ActivitiesRadarChart({activities, chartWrapper, ratio}) {
+function ActivitiesRadarChart({ activities, chartWrapper, ratio }) {
     const kindNamesEN = activities.kind
 
     const kindNamesENtoFR ={
@@ -42,15 +41,31 @@ function ActivitiesRadarChart({activities, chartWrapper, ratio}) {
                 outerRadius="70%"
                 data={[...activities.data].reverse()}
                 >
-                <PolarGrid stroke="#FFFFFF" radialLines={false} />
-                <PolarAngleAxis dataKey="kind" tickFormatter={kindToName} stroke="#FFFFFF" tickLine={false} tick={<CustomPolarAngleAxis />} />
-                <Radar name="userActivities" dataKey="value" fill="#FF0101" fillOpacity={0.7}  />
+                <PolarGrid
+                    stroke="#FFFFFF"
+                    radialLines={false}
+                />
+                <PolarAngleAxis
+                    dataKey="kind"
+                    tickFormatter={kindToName}
+                    stroke="#FFFFFF"
+                    tickLine={false}
+                    tick={<CustomPolarAngleAxis />}
+                />
+                <Radar
+                    name="userActivities"
+                    dataKey="value"
+                    fill="#FF0101"
+                    fillOpacity={0.7}
+                />
             </RadarChart>
     )
 }
 
 ActivitiesRadarChart.propTypes = {
-    activities: PropTypes.object
+    activities: PropTypes.object,
+    chartWrapper: PropTypes.number,
+    ratio: PropTypes.number
 }
 
 export default ActivitiesRadarChart

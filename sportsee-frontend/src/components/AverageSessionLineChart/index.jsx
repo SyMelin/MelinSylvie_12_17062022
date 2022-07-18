@@ -1,9 +1,9 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, Label } from 'recharts'
 import { useState } from 'react';
 import PropTypes from 'prop-types'
+import { LineChart, Line, XAxis, YAxis, Tooltip, Label } from 'recharts'
 import '../../styles/CustomTooltip.css'
 
-function CustomTooltip({ payload, active }) {
+function CustomTooltipLineChart({ payload, active }) {
     if (active) {
       return (
         <div className="custom-tooltip">
@@ -16,18 +16,36 @@ function CustomTooltip({ payload, active }) {
 }
 
 
-function CustomTooltipCursor({ cursorX, ...rest }) {
+function CustomTooltipCursorLineChart({ cursorX }) {
   return (
-    <rect width="110%" height="100%" x={cursorX} y={0} fill="#000000" opacity={0.1} />
+    <rect
+      width="110%"
+      height="100%"
+      x={cursorX}
+      y={0} fill="#000000"
+      opacity={0.1}
+    />
   )
 }
 
-function CustomLabel() {
+CustomTooltipCursorLineChart.propTypes = {
+  cursorX: PropTypes.number
+}
+
+function CustomLabelLineChart() {
   return (
-    <text fontSize="15" fontWeight="500" fill="#FFFFFF" opacity={0.5}><tspan x="13%" y="18%">Durée moyenne des</tspan><tspan x="13%" y="28%">sessions</tspan></text>
+    <text
+      fontSize="15"
+      fontWeight="500"
+      fill="#FFFFFF"
+      opacity={0.5}
+    >
+      <tspan x="13%" y="18%">Durée moyenne des</tspan>
+      <tspan x="13%" y="28%">sessions</tspan>
+    </text>
   )
 }
-function AverageSessionLineChart({averageSessions, chartWrapper, dimensions, ratio}) {
+function AverageSessionLineChart({ averageSessions, chartWrapper, ratio }) {
   const [perc, setPerc] = useState(100);
   const [cursorX, setCursorX] = useState(-1000)
   const [cursorY, setCursorY] = useState(0)
@@ -78,7 +96,14 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions, rat
             <stop offset={`${100}%`} stopColor="#FFFFFF" />
           </linearGradient>
         </defs>
-        <Line type="natural" dataKey="sessionLength" stroke="url(#colorUv)" strokeWidth={2} dot={false} activeDot={{ stroke:'rgba(255, 255, 255, 0.1983)', strokeWidth:'10', fill:"#FFFFFF", r: 4 }} />
+        <Line
+          type="natural"
+          dataKey="sessionLength"
+          stroke="url(#colorUv)"
+          strokeWidth={2}
+          dot={false}
+          activeDot={{ stroke:'rgba(255, 255, 255, 0.1983)', strokeWidth:'10', fill:"#FFFFFF", r: 4 }}
+        />
         <XAxis
           type='number' domain={['dataMin - 1', 'dataMax']}
           scale='linear'
@@ -93,15 +118,21 @@ function AverageSessionLineChart({averageSessions, chartWrapper, dimensions, rat
           />
         
         <YAxis axisLine={false} tickLine={false} tick={false}>
-          <Label content={<CustomLabel />} />
+          <Label content={<CustomLabelLineChart />} />
         </YAxis>
-        <Tooltip cursor={<CustomTooltipCursor cursorX={cursorX} />} position={{x: (cursorX < ((chartWrapper - 60) / 3) - 50) ? cursorX + 10 : cursorX - 50, y: cursorY - 50}} content={<CustomTooltip />} />
+        <Tooltip
+          content={<CustomTooltipLineChart />}
+          cursor={<CustomTooltipCursorLineChart cursorX={cursorX} />}
+          position={{x: (cursorX < ((chartWrapper - 60) / 3) - 50) ? cursorX + 10 : cursorX - 50, y: cursorY - 50}}
+        />
     </LineChart>
   )
 }
 
 AverageSessionLineChart.propTypes = {
-    averageSession: PropTypes.array
+    averageSession: PropTypes.array,
+    chartWrapper: PropTypes.number,
+    ratio: PropTypes.number
 }
 
 export default AverageSessionLineChart

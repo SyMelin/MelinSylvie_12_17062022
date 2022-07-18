@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import ActivitySessionsBarChart from "../../components/ActivitySessionsBarChart"
 import AverageSessionLineChart from "../../components/AverageSessionLineChart"
 import ActivitiesRadarChart from "../../components/ActivitiesRadarChart"
@@ -14,16 +15,32 @@ function ChartWrapper({ user, dimensions }) {
     return (
         <div className="chartWrapper">
             <div className="chart1">
-                <ActivitySessionsBarChart activitySessions={user.activity.sessions} chartWrapper={chartWrapper} dimensions={dimensions} ratio={ratio} />
+                <ActivitySessionsBarChart
+                    activitySessions={user.activity.sessions}
+                    chartWrapper={chartWrapper}
+                    ratio={ratio}
+                />
             </div>
             <div className="chart2">
-                <AverageSessionLineChart averageSessions={user.averageSessions.sessions} chartWrapper={chartWrapper} dimensions={dimensions} ratio={ratio} />
+                <AverageSessionLineChart
+                    averageSessions={user.averageSessions.sessions}
+                    chartWrapper={chartWrapper}
+                    ratio={ratio}
+                />
             </div>
             <div className="chart3">
-                <ActivitiesRadarChart activities={user.activities} chartWrapper={chartWrapper} dimensions={dimensions} ratio={ratio} />
+                <ActivitiesRadarChart
+                    activities={user.activities}
+                    chartWrapper={chartWrapper}
+                    ratio={ratio}
+                />
             </div>
             <div className="chart4">
-                <ScoreRadialBarChart todayScore={user.todayScore} chartWrapper={chartWrapper} dimensions={dimensions} ratio={ratio} /> 
+                <ScoreRadialBarChart
+                    todayScore={user.todayScore}
+                    chartWrapper={chartWrapper}
+                    ratio={ratio}
+                /> 
             </div>
             <EnergySourcesCount
                 keyData={user.keyData}
@@ -32,6 +49,12 @@ function ChartWrapper({ user, dimensions }) {
             />
         </div>
     )
+}
+
+ChartWrapper.propTypes = {
+    user: PropTypes.object,
+    dimensions: PropTypes.object
+
 }
 
 export default ChartWrapper

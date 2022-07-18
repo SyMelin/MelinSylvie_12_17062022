@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import energySources from '../../utils/constantes/energySources'
 import '../../styles/EnergySourceListItem.css'
 
-function EnergySourceListItem({element}) {
+function EnergySourceListItem({ element }) {
     const elementType = element[0].replace('Count', '')
     const elementCount = element[1]
 
