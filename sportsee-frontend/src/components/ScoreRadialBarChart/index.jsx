@@ -16,7 +16,7 @@ function SRBCCustomLabel({ todayScore, ratio }) {
 }
 
 SRBCCustomLabel.propTypes = {
-    todayScore: PropTypes.number,
+    todayScore: PropTypes.number.isRequired,
     ratio: PropTypes.number
 }
 
@@ -61,7 +61,7 @@ function ScoreRadialBarChart({ todayScore, chartWrapper, ratio }) {
 
 ScoreRadialBarChart.propTypes = {
     todayScore: PropTypes.number,
-    chartWrapper: PropTypes.number,
+    chartWrapper: PropTypes.number.isRequired,
     ratio: PropTypes.number
 }
 

@@ -11,4 +11,8 @@ IconLinkListItem.propTypes = {
     icon: PropTypes.string
 }
 
+IconLinkListItem.defaultProps = {
+    icon: ''
+}
+
 export default IconLinkListItem

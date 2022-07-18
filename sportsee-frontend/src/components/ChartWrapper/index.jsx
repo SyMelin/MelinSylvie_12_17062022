@@ -52,9 +52,8 @@ function ChartWrapper({ user, dimensions }) {
 }
 
 ChartWrapper.propTypes = {
-    user: PropTypes.object,
+    user: PropTypes.object.isRequired,
     dimensions: PropTypes.object
-
 }
 
 export default ChartWrapper

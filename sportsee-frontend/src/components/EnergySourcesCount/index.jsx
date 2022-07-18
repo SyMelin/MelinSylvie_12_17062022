@@ -21,7 +21,7 @@ function EnergySourcesCount({ keyData, chartWrapper, dimensions }) {
 }
 
 EnergySourcesCount.propTypes = {
-    keyData: PropTypes.object,
+    keyData: PropTypes.object.isRequired,
     chartWrapper: PropTypes.number,
     dimensions: PropTypes.object
 }

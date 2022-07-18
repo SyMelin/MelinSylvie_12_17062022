@@ -20,4 +20,9 @@ Welcome.propTypes = {
     todayScore: PropTypes.number
 }
 
+Welcome.defaultProps = {
+    userName: '',
+    todayScore: 0
+}
+
 export default Welcome

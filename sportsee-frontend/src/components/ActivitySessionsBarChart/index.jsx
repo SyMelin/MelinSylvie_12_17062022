@@ -142,8 +142,8 @@ function ActivitySessionsBarChart({ activitySessions, chartWrapper, ratio }) {
 }
 
 ActivitySessionsBarChart.propTypes = {
-    averageSession: PropTypes.array,
-    chartWrapper: PropTypes.number,
+    activitySessions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    chartWrapper: PropTypes.number.isRequired,
     ratio: PropTypes.number
 }
 

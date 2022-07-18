@@ -26,7 +26,7 @@ function EnergySourceListItem({ element }) {
 }
 
 EnergySourceListItem.propTypes = {
-    element: PropTypes.array,
+    element: PropTypes.array.isRequired,
 }
 
 export default EnergySourceListItem

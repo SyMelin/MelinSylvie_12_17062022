@@ -15,6 +15,10 @@ function CustomTooltipLineChart({ payload, active }) {
     return null;
 }
 
+CustomTooltipLineChart.propTypes = {
+  payload: PropTypes.array,
+  active: PropTypes.bool
+}
 
 function CustomTooltipCursorLineChart({ cursorX }) {
   return (
@@ -77,7 +81,6 @@ function AverageSessionLineChart({ averageSessions, chartWrapper, ratio }) {
     return weekdays[day - 1]
   }
 
-
   return (
     <LineChart 
       width={(chartWrapper - 60) / 3}
@@ -130,8 +133,8 @@ function AverageSessionLineChart({ averageSessions, chartWrapper, ratio }) {
 }
 
 AverageSessionLineChart.propTypes = {
-    averageSession: PropTypes.array,
-    chartWrapper: PropTypes.number,
+    averageSessions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    chartWrapper: PropTypes.number.isRequired,
     ratio: PropTypes.number
 }
 

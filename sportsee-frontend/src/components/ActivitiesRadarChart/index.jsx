@@ -63,8 +63,8 @@ function ActivitiesRadarChart({ activities, chartWrapper, ratio }) {
 }
 
 ActivitiesRadarChart.propTypes = {
-    activities: PropTypes.object,
-    chartWrapper: PropTypes.number,
+    activities: PropTypes.object.isRequired,
+    chartWrapper: PropTypes.number.isRequired,
     ratio: PropTypes.number
 }
 
