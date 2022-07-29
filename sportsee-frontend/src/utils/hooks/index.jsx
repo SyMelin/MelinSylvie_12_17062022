@@ -1,11 +1,49 @@
 import { useState, useEffect } from'react'
-import { User } from '../../models/user'
+import axios from 'axios'
 
 /**
  * Send multi fetch requests in useEffect
  * @param { Object.<String> } urls
  * @return { Object.<isLoading: Bool, data: Array, error: Bool> } - Object of state variables
  */
+export function useFetch(urls) {
+
+    const [data, setData] = useState({})
+    const [isLoading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
+
+    useEffect(() => {
+
+        if(!urls) return //If url not defined, return nothing
+
+        setLoading(true)
+
+        async function fetchData () {
+            try {
+                await axios
+                .all(urls.map((url) => axios.get(url)))
+                .then(responses => {
+                    const rawData = [...responses]
+                    const data = (rawData).map(el => el.data.data)
+                    console.log(data)
+                    setData(data)
+                })
+            } catch (errors) {
+                    console.log('== error ==', errors)
+                    setError(true)
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchData()  
+
+    }, [])
+
+    return { isLoading, data, error }
+}
+
+
+/* function useFetch avant modifications suite à soutenance:
 export function useFetch(urls) {
 
     const [data, setData] = useState({})
@@ -37,3 +75,4 @@ export function useFetch(urls) {
 
     return { isLoading, data, error }
 }
+*/
