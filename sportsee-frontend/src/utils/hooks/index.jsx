@@ -1,4 +1,5 @@
 import { useState, useEffect } from'react'
+import { User } from '../../models/user'
 
 /**
  * Send multi fetch requests in useEffect
@@ -22,7 +23,7 @@ export function useFetch(urls) {
                 const response = await Promise.all(urls.map(url => fetch(url, { method: 'GET' })))
                 const responseJSON = await Promise.all(response.map(e => e.json()))
                 const data = responseJSON.map((e) => e.data)
-                setData(data)
+                setData(new User(data))// modification suite à soutenance
             } catch (err) {
                 console.log('== error ==', err)
                 setError(true)

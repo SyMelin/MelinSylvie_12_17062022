@@ -3,7 +3,6 @@ import Welcome from "../../components/Welcome"
 import NumbersWrapper from "../../components/NumbersWrapper"
 import urls from "../../utils/constantes/urls"
 import { useFetch } from '../../utils/hooks'
-import { User } from '../../models/user'
 import '../../styles/Profile.css'
 
 function Profile() {
@@ -41,8 +40,8 @@ function Profile() {
             //const [ mainData, activity, averageSessions, activities, todayScore, keyData ] = data
             //const user = { mainData, activity, averageSessions, activities, todayScore, keyData }
         */
-        const user = new User(data)
-       // console.log(user)
+        const user = data // modification suite à soutenance
+        //console.log(user)
 
         return (
             <div className="dashboard">
