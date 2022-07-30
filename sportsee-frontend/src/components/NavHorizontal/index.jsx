@@ -1,5 +1,11 @@
 import '../../styles/NavHorizontal.css'
 
+/**
+ * React component: the horizontal navigation element of the website
+ * 
+ * @type { React.FC }
+ * @returns { React.ReactElement }
+ */
 //The <a> tags are to be substituted by <Link> elements from react-router-dom when the router is implemented
 function NavHorizontal() {
     return (

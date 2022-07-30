@@ -1,3 +1,9 @@
+/**
+ * Create an object containing urls from an object containing endpoints
+ * @function urls
+ * @param { Number } userId - id of the user
+ * @returns { Object }
+ * */
 const urls = function (userId) {
     const domain = 'http://localhost:3000'
 

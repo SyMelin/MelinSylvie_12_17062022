@@ -1,11 +1,35 @@
 import PropTypes from 'prop-types'
+import React from 'react'
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts'
 import '../../styles/ActivitiesRadarChart.css'
 
-function ActivitiesRadarChart({ activities, lineChartWidth, ratio }) {
-    const kindNamesEN = activities.kind
 
-    const kindNamesENtoFR ={
+/**
+ * ActivitiesRadarChart properties
+ * 
+ * @typedef { Object } ARCProps
+ * @prop { Object.<{ data: Array, kind: Object, userId: Integer }> } activities - Activities of the user
+ * @prop { Number} lineChartWidth  - Length used as reference to handle the responsivity of the chart
+ * @prop { Number } ratio  - Ratio used to handle the responsivity of the chart
+ */
+
+/**
+ * React component: Radar chart of the user's activities
+ * 
+ * @type { React.FC<ARCProps> }
+ * @returns { React.ReactElement }
+ */
+function ActivitiesRadarChart({ activities, lineChartWidth, ratio }) {
+
+    /** @constant
+    @type { Object } object of all activity's kinds in English
+    */
+    const kindNamesEN = activities.kind
+    
+    /** @constant
+    @type { Object } conversion object of English word to French word
+    */
+    const kindNamesENtoFR = {
         cardio: 'Cardio',
         energy: 'Energie',
         endurance: 'Endurance',
@@ -14,10 +38,35 @@ function ActivitiesRadarChart({ activities, lineChartWidth, ratio }) {
         intensity: 'Intensité'
     }
  
+    /**
+     * Return translation from English to French of the string set as 'kind' param
+     * @function kindToName
+     * @param { String } kind - kind of the activity
+     * @returns { String }
+     * */
     const kindToName = (kind) => {
         return kindNamesENtoFR[kindNamesEN[kind]]
     }
 
+    
+    /**
+     * CustomPolarAngleAxisTick properties
+     * 
+     * @typedef { Object } CPAATProps
+     * @prop { Object } payload
+     * @prop { Number } x
+     * @prop { Number } y
+     * @prop { Number } cx
+     * @prop { Number } cy
+     * 
+     */
+
+    /**
+     * React component: Customised polar angle axis tick for the radar chart
+     * 
+     * @type { React.FC<CPAATProps> }
+     * @returns { React.ReactElement }
+     */
     function CustomPolarAngleAxisTick({ payload, x, y, cx, cy, ...rest }) {
         return (
             <text
@@ -63,8 +112,11 @@ function ActivitiesRadarChart({ activities, lineChartWidth, ratio }) {
 }
 
 ActivitiesRadarChart.propTypes = {
+    /** Activities of the user */ 
     activities: PropTypes.object.isRequired,
+    /** Length used as reference to handle the responsivity of the chart */
     lineChartWidth: PropTypes.number.isRequired,
+    /** Ratio used to handle the responsivity of the chart */
     ratio: PropTypes.number
 }
 

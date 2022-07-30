@@ -2,6 +2,21 @@ import { RadialBarChart, RadialBar } from 'recharts';
 import PropTypes from 'prop-types'
 import '../../styles/ScoreRadialBarChart.css'
 
+
+/**
+ * ScoreRadialBarChartCustomLabel properties
+ * 
+ * @typedef { Object } SRBCCLProps
+ * @prop { Number{0-1} } todayScore  Today score of the user
+ * @prop { Number } ratio Ratio used to handle the responsivity of the chart
+ */
+
+/**
+ * React component: a customised Label for radial bar chart
+ * 
+ * @type { React.FC<SRBCCLProps> }
+ * @returns { React.ReactElement }
+ */
 function ScoreRadialBarChartCustomLabel({ todayScore, ratio }) {
     return (
         <g>
@@ -16,11 +31,28 @@ function ScoreRadialBarChartCustomLabel({ todayScore, ratio }) {
 }
 
 ScoreRadialBarChartCustomLabel.propTypes = {
+    /** Today score of the user */
     todayScore: PropTypes.number.isRequired,
+    /** Ratio used to handle the responsivity of the chart */
     ratio: PropTypes.number
 }
 
 
+/**
+ * ScoreRadialBarChart properties
+ * 
+ * @typedef { Object } ASBCProps
+ * @prop { Number{0-1} } todayScore Today score of the user
+ * @prop { Number} lineChartWidth Length used as reference to handle the responsivity of the chart
+ * @prop { Number } ratio Ratio used to handle the responsivity of the chart
+ */
+
+/**
+ * React component: a radial bar chart of the user's score
+ * 
+ * @type { React.FC<ASBCProps> }
+ * @returns { React.ReactElement }
+ */
 function ScoreRadialBarChart({ todayScore, lineChartWidth, ratio }) {
     const arrayScore = [
         {score: 1, fill: "#FFFFFF"}, //reference = 100%
@@ -61,8 +93,11 @@ function ScoreRadialBarChart({ todayScore, lineChartWidth, ratio }) {
 }
 
 ScoreRadialBarChart.propTypes = {
+    /** Today score of the user */
     todayScore: PropTypes.number,
+    /** Length used as reference to handle the responsivity of the chart */
     lineChartWidth: PropTypes.number.isRequired,
+    /** Ratio used to handle the responsivity of the chart */
     ratio: PropTypes.number
 }
 

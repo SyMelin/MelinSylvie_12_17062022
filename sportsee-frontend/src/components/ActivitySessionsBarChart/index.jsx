@@ -3,6 +3,21 @@ import PropTypes from 'prop-types'
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import '../../styles/ActivitySessionsBarChart.css'
 
+
+/**
+ * CustomTooltipBarChart properties
+ * 
+ * @typedef { Object } CTBCProps
+ * @prop { Array.<Object> } payload Each object of the array contains data related to the matching bar 
+ * @prop { Boolean} active 
+ */
+
+/**
+ * React component: a customised tooltip for bar chart
+ * 
+ * @type { React.FC<CTBCProps> }
+ * @returns { React.ReactElement }
+ */
 function CustomTooltipBarChart({ payload, active }) {
     if (active) {
         return (
@@ -22,6 +37,21 @@ CustomTooltipBarChart.propTypes = {
 }
 
 
+/**
+ * CustomTooltipCursorBarChart properties
+ * 
+ * @typedef { Object } CTCBCProps
+ * @prop { Number } cursorX Position of the cursor on horizontal plane (x)
+ * @prop { Number} lineChartWidth Length used as reference to handle the responsivity of the chart
+ * @prop { Number } ratio Ratio used to handle the responsivity of the chart
+ */
+
+/**
+ * React component: a customised tooltip cursor for bar chart
+ * 
+ * @type { React.FC<CTCBCProps> }
+ * @returns { React.ReactElement }
+ */
 function CustomTooltipCursorBarChart({ cursorX, lineChartWidth, ratio }) {
     return (
         <rect
@@ -36,21 +66,46 @@ function CustomTooltipCursorBarChart({ cursorX, lineChartWidth, ratio }) {
 }
 
 CustomTooltipCursorBarChart.propTypes = {
+    /** Position of the cursor on horizontal plane (x) */
     cursorX: PropTypes.number,
+    /** Length used as reference to handle the responsivity of the chart */
     lineChartWidth: PropTypes.number,
+    /** Ratio used to handle the responsivity of the chart */
     ratio: PropTypes.number
 }
 
 
+/**
+ * ActivitySessionsBarChart properties
+ * 
+ * @typedef { Object } ASBCProps
+ * @prop { Array.<Object> } activitySessions Activity sessions of the user
+ * @prop { Number} lineChartWidth Length used as reference to handle the responsivity of the chart
+ * @prop { Number } ratio Ratio used to handle the responsivity of the chart
+ */
+
+/**
+ * React component: a bar chart of the user's activity sessions
+ * 
+ * @type { React.FC<ASBCProps> }
+ * @returns { React.ReactElement }
+ */
 function ActivitySessionsBarChart({ activitySessions, lineChartWidth, ratio }) {
-    const numberOfDay = (day) => { 
-        return parseInt((day.split('-'))[2], 10)
+
+    /**
+     * Return number of the day from date with yy-mm-dd format
+     * @function numberOfDay
+     * @param { String } date - date fromat: yy-mm-dd
+     * @returns { Integer }
+     * */
+    const numberOfDay = (date) => {
+        return parseInt((date.split('-'))[2], 10) 
     }
 
     const [cursorX, setCursorX] = useState(-1000)
     const [cursorY, setCursorY] = useState(0)
+
     const onMouseMove = hoveredData => {
-    //console.log(hoveredData);
         if (hoveredData && hoveredData.activeCoordinate) {
             const positionX =  hoveredData.activeCoordinate.x
             const positionY =  hoveredData.activeCoordinate.y
@@ -59,6 +114,7 @@ function ActivitySessionsBarChart({ activitySessions, lineChartWidth, ratio }) {
         }
     };
 
+    // on mouse out, the element will be set out of sight
     const onMouseOut = () => {
         setCursorX(-1000)
         setCursorY(0)
@@ -144,8 +200,11 @@ function ActivitySessionsBarChart({ activitySessions, lineChartWidth, ratio }) {
 }
 
 ActivitySessionsBarChart.propTypes = {
+    /** Activity sessions of the user */
     activitySessions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    /** Length used as reference to handle the responsivity of the chart */
     lineChartWidth: PropTypes.number.isRequired,
+    /** Ratio used to handle the responsivity of the chart */
     ratio: PropTypes.number
 }
 

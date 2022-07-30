@@ -7,8 +7,21 @@ import EnergySourcesList from "../EnergySourcesList"
 import "../../styles/NumbersWrapper.css"
 
 
+/**
+ * NumbersWrapper properties
+ * 
+ * @typedef { Object } Props
+ * @prop { Object } user - user's global data
+ * @prop { Object.<{height: Number, width: Number }> } windowDimensions - dimensions of the current window
+ */
+
+ /**
+ * React component: a wrapper for all the elements that contain user's figures (charts + energy soucres count)
+ * 
+ * @type { React.FC<Props> }
+ * @returns { React.ReactElement }
+ */
 function NumbersWrapper({ user, windowDimensions }) {
-    //console.log(dimensions.width)
     const lineChartWidth =  windowDimensions.width * 0.58 //line chart is 58% on 1440px website mock-up
     const ratio = lineChartWidth / 835 //line chart's width is 835px on 1440px website mock-up
 
@@ -52,7 +65,9 @@ function NumbersWrapper({ user, windowDimensions }) {
 }
 
 NumbersWrapper.propTypes = {
+    /** user's global data */
     user: PropTypes.object.isRequired,
+    /** dimensions of the current window */
     windowDimensions: PropTypes.object
 }
 

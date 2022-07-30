@@ -2,8 +2,7 @@ import { useState, useEffect } from'react'
 import axios from 'axios'
 
 /**
- * Send multi fetch requests in useEffect
- * @param { Object.<String> } urls
+ * Hook to launch mutli fetch request
  * @return { Object.<isLoading: Bool, data: Array, error: Bool> } - Object of state variables
  */
 export function useFetch(urls) {
@@ -14,22 +13,26 @@ export function useFetch(urls) {
 
     useEffect(() => {
 
-        if(!urls) return //If url not defined, return nothing
+        if(!urls) return
 
         setLoading(true)
 
-        async function fetchData () {
+        /**
+         * Send multi fetch requests using axios
+         * And, according to the response, set the value of the state variables : data, isLoading, error
+         * @async
+         * @param { Object.<String> } urls
+         */
+        async function fetchData() {
             try {
                 await axios
                 .all(urls.map((url) => axios.get(url)))
                 .then(responses => {
                     const rawData = [...responses]
                     const data = (rawData).map(el => el.data.data)
-                    console.log(data)
                     setData(data)
                 })
             } catch (errors) {
-                    console.log('== error ==', errors)
                     setError(true)
             } finally {
                 setLoading(false)
@@ -43,7 +46,7 @@ export function useFetch(urls) {
 }
 
 
-/* function useFetch avant modifications suite à soutenance:
+/* function useFetch() before modifications following the project's presentation:
 export function useFetch(urls) {
 
     const [data, setData] = useState({})
@@ -76,3 +79,37 @@ export function useFetch(urls) {
     return { isLoading, data, error }
 }
 */
+
+
+/**
+ * Hook to launch handleResize
+ * @return { Object.<windowDimensions: Object> } - Object of state variable
+ */
+export function useHandleResize() {
+    const [windowDimensions, setWindowDimensions] = useState({ 
+        height: window.innerHeight,
+        width: window.innerWidth
+    })
+    
+    useEffect(() => {
+
+        /**
+         * Handle the event on resize:
+         *   get the current height and width of the window
+         *   and update the windowDimensions state variable
+         */
+        function handleResize() {
+            setWindowDimensions({
+            height: window.innerHeight,
+            width: window.innerWidth
+            })
+        }
+        window.addEventListener('resize', handleResize)
+        
+        return _ => {
+            window.removeEventListener('resize', handleResize)
+        }
+    })
+
+    return { windowDimensions }
+}

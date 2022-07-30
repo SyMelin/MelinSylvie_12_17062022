@@ -4,6 +4,9 @@ import carbsIcon from '../../assets/apple.svg'
 import fatIcon from '../../assets/cheeseburger.svg'
 
 
+/** @constant
+    @type { Object.<Object>}
+*/
 const energySources = {
     calorie: {
         name: 'Calories',
