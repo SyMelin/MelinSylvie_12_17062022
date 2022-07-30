@@ -12,7 +12,7 @@ import "../../styles/NumbersWrapper.css"
  * 
  * @typedef { Object } Props
  * @prop { Object } user - user's global data
- * @prop { Object.<{height: Number, width: Number }> } windowDimensions - dimensions of the current window
+ * @prop { Object.<height: Number, width: Number> } windowDimensions - dimensions of the current window
  */
 
  /**

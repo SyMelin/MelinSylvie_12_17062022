@@ -8,7 +8,7 @@ import '../../styles/ActivitiesRadarChart.css'
  * ActivitiesRadarChart properties
  * 
  * @typedef { Object } ARCProps
- * @prop { Object.<{ data: Array, kind: Object, userId: Integer }> } activities - Activities of the user
+ * @prop { Object.<data: Array, kind: Object, userId: Integer> } activities - Activities of the user
  * @prop { Number} lineChartWidth  - Length used as reference to handle the responsivity of the chart
  * @prop { Number } ratio  - Ratio used to handle the responsivity of the chart
  */

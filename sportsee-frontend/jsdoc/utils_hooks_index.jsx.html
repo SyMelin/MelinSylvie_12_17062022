@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: utils/hooks/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: utils/hooks/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState, useEffect } from'react'
+import axios from 'axios'
+
+/**
+ * Hook to launch mutli fetch request
+ * @return { Object.&lt;isLoading: Bool, data: Array, error: Bool> } - Object of state variables
+ */
+export function useFetch(urls) {
+
+    const [data, setData] = useState({})
+    const [isLoading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
+
+    useEffect(() => {
+
+        if(!urls) return
+
+        setLoading(true)
+
+        /**
+         * Send multi fetch requests using axios
+         * And, according to the response, set the value of the state variables : data, isLoading, error
+         * @async
+         * @param { Object.&lt;String> } urls
+         */
+        async function fetchData() {
+            try {
+                await axios
+                .all(urls.map((url) => axios.get(url)))
+                .then(responses => {
+                    const rawData = [...responses]
+                    const data = (rawData).map(el => el.data.data)
+                    setData(data)
+                })
+            } catch (errors) {
+                    setError(true)
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchData()  
+
+    }, [])
+
+    return { isLoading, data, error }
+}
+
+
+/* function useFetch() before modifications following the project's presentation:
+export function useFetch(urls) {
+
+    const [data, setData] = useState({})
+    const [isLoading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
+
+    useEffect(() => {
+
+        if(!urls) return //If url not defined, return nothing
+
+        setLoading(true)
+
+        async function fetchData() {
+            try {
+                const response = await Promise.all(urls.map(url => fetch(url, { method: 'GET' })))
+                const responseJSON = await Promise.all(response.map(e => e.json()))
+                const data = responseJSON.map((e) => e.data)
+                setData(new User(data))// modification suite à soutenance
+            } catch (err) {
+                console.log('== error ==', err)
+                setError(true)
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchData()
+
+    }, [])
+
+    return { isLoading, data, error }
+}
+*/
+
+
+/**
+ * Hook to launch handleResize
+ * @return { Object.&lt;windowDimensions: Object> } - Object of state variable
+ */
+export function useHandleResize() {
+    const [windowDimensions, setWindowDimensions] = useState({ 
+        height: window.innerHeight,
+        width: window.innerWidth
+    })
+    
+    useEffect(() => {
+
+        /**
+         * Handle the event on resize:
+         *   get the current height and width of the window
+         *   and update the windowDimensions state variable
+         */
+        function handleResize() {
+            setWindowDimensions({
+            height: window.innerHeight,
+            width: window.innerWidth
+            })
+        }
+        window.addEventListener('resize', handleResize)
+        
+        return _ => {
+            window.removeEventListener('resize', handleResize)
+        }
+    })
+
+    return { windowDimensions }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="User.html">User</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActivitiesRadarChart">ActivitiesRadarChart</a></li><li><a href="global.html#ActivitySessionsBarChart">ActivitySessionsBarChart</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSessionLineChart">AverageSessionLineChart</a></li><li><a href="global.html#CustomLabelLineChart">CustomLabelLineChart</a></li><li><a href="global.html#CustomTooltipBarChart">CustomTooltipBarChart</a></li><li><a href="global.html#CustomTooltipCursorBarChart">CustomTooltipCursorBarChart</a></li><li><a href="global.html#CustomTooltipCursorLineChart">CustomTooltipCursorLineChart</a></li><li><a href="global.html#CustomTooltipLineChart">CustomTooltipLineChart</a></li><li><a href="global.html#energySources">energySources</a></li><li><a href="global.html#EnergySourcesList">EnergySourcesList</a></li><li><a href="global.html#EnergySourcesListItem">EnergySourcesListItem</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#IconLinkListItem">IconLinkListItem</a></li><li><a href="global.html#kindToName">kindToName</a></li><li><a href="global.html#NavHorizontal">NavHorizontal</a></li><li><a href="global.html#NavVertical">NavVertical</a></li><li><a href="global.html#numberOfDay">numberOfDay</a></li><li><a href="global.html#NumbersWrapper">NumbersWrapper</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#ScoreRadialBarChart">ScoreRadialBarChart</a></li><li><a href="global.html#ScoreRadialBarChartCustomLabel">ScoreRadialBarChartCustomLabel</a></li><li><a href="global.html#sportsList">sportsList</a></li><li><a href="global.html#urls">urls</a></li><li><a href="global.html#useFetch">useFetch</a></li><li><a href="global.html#useHandleResize">useHandleResize</a></li><li><a href="global.html#Welcome">Welcome</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Jul 30 2022 17:38:02 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -8,7 +8,7 @@ import '../../styles/EnergySourcesCount.css'
  * @typedef { Object } Props
  * @prop { Object } keyData - keyData from the user's global data
  * @prop { Number} lineChartWidth - Length used as reference to handle the responsivity of the chart
- * @prop { Object.<{height: Number, width: Number }> } windowDimensions - dimensions of the current window
+ * @prop { Object.<height: Number, width: Number> } windowDimensions - dimensions of the current window
  */
 
  /**
