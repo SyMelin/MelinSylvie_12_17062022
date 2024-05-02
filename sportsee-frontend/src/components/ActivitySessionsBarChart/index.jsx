@@ -1,3 +1,10 @@
+/**
+ * ActivitySessionsBarChart component
+ * 
+ * Note: A recent version of the `recharts` dependency can lead to problems with the width of this component.
+ * It is recommended to use version 2.1.10 or below.
+ */
+
 import { useState } from 'react';
 import PropTypes from 'prop-types'
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';

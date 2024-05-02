@@ -53,7 +53,7 @@ ScoreRadialBarChartCustomLabel.propTypes = {
  * @type { React.FC<ASBCProps> }
  * @returns { React.ReactElement }
  */
-function ScoreRadialBarChart({ todayScore, lineChartWidth, ratio }) {
+function ScoreRadialBarChart({ todayScore=0, lineChartWidth, ratio }) {
     const arrayScore = [
         {score: 1, fill: "#FFFFFF"}, //reference = 100%
         {score: todayScore, fill: "#FF0000"}
@@ -101,8 +101,9 @@ ScoreRadialBarChart.propTypes = {
     ratio: PropTypes.number
 }
 
-ScoreRadialBarChart.defaultProps = {
-    todayScore: 0
-}
+// ScoreRadialBarChart.defaultProps = {
+//     todayScore: 0
+// }
+// defaultProps on function components will become unsupported in future versions of React.
 
 export default ScoreRadialBarChart
