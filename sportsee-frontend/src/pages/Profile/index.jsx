@@ -54,9 +54,7 @@ function Profile() {
             //const user = { mainData, activity, averageSessions, activities, todayScore, keyData }
         */
 
-        console.log("data", data)
         const user = new User(data) // modification following the project's presentation
-        console.log("user", user)
 
         return (
             <div className="dashboard">
