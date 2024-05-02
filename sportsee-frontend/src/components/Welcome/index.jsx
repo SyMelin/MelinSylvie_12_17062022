@@ -16,7 +16,7 @@ import '../../styles/Welcome.css'
  * @type { React.FC<Props> }
  * @returns { React.ReactElement }
  */
-function Welcome({ userName, todayScore }) {
+function Welcome({ userName='', todayScore=0 }) {
     const scoreGoal = 0.10 //Here scoreGoal is arbitrarily set at 0.10. However it should be defined (by the user maybe?)
 
     return (
@@ -36,9 +36,10 @@ Welcome.propTypes = {
     todayScore: PropTypes.number
 }
 
-Welcome.defaultProps = {
-    userName: '',
-    todayScore: 0
-}
+// Welcome.defaultProps = {
+//    userName: '',
+//    todayScore: 0
+//}
+// defaultProps on function components will become unsupported in future versions of React.
 
 export default Welcome

@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "create-react-app": "^5.0.1"
-  },
-  "devDependencies": {
-    "jsdoc": "^3.6.11"
-  }
-}

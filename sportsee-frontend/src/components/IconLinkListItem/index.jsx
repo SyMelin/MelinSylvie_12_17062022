@@ -15,7 +15,7 @@ import '../../styles/IconLinkListItem.css'
  * @returns { React.ReactElement }
  */
 //The <a> tags are to be substituted by <Link> or <NavLink> elements from react-router-dom when the router is implemented
-function IconLinkListItem({ icon }) {
+function IconLinkListItem({ icon='' }) {
     return (
         <li className="iconListItem"><a className='nav__link' href='#'><img src={icon} alt="" className='icon'/></a></li>
     )
@@ -26,8 +26,9 @@ IconLinkListItem.propTypes = {
     icon: PropTypes.string
 }
 
-IconLinkListItem.defaultProps = {
-    icon: ''
-}
+// IconLinkListItem.defaultProps = {
+//    icon: ''
+//}
+// defaultProps on function components will become unsupported in future versions of React.
 
 export default IconLinkListItem
