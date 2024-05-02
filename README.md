@@ -100,6 +100,22 @@ yarn add recharts@2.1.10
 
 Please keep this in mind when working with the project.
 
+## GitHub Pages Version
+
+The `gh-pages` branch of this project is a special version designed to be displayed on GitHub Pages. In this version, instead of making API calls to fetch data from the server, the data is imported directly from a local mock data file. This is because GitHub Pages doesn't support server-side operations.
+
+Here's an example of how the data import is done:
+
+```jsx
+/**
+ * Note: As GitHub Pages doesn't support server-side operations, the data that would normally be fetched 
+ * from the server using axios is instead imported directly from a local mock data file. 
+ * This is a workaround specifically for the GitHub Pages version of this project and is not representative 
+ * of how the application functions in a production environment.
+ */
+const { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } = mockedData;
+```
+
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more information.
