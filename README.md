@@ -1,6 +1,6 @@
 # Sportsee - Frontend Project
 
-Welcome to the SportSee project, a frontend project for the OpenClassrooms training program. This is a sports analytics dashboard designed for desktop use, with a minimum resolution of 1024x780 pixels. The project focuses on creating a React-based dashboard with various components for visualizing sports data.
+Welcome to the SportSee project, a frontend project for the OpenClassrooms training program. It was cloned from [OpenClassrooms-Student-Center/P9-front-end-dashboard](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git). This is a sports analytics dashboard designed for desktop use, with a minimum resolution of 1024x780 pixels. The project focuses on creating a React-based dashboard with various components for visualizing sports data.
 
 ## 1. Project Overview
 
